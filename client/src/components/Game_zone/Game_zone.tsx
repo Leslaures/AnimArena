@@ -1,5 +1,5 @@
 function Game_zone() {
-  return "tutu";
+  return "Game_Zone";
 }
 
 export default Game_zone;
