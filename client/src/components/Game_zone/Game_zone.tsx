@@ -12,9 +12,9 @@ function Game_zone() {
               alt="rectangle blanc transparent"
             />
             <p>Pseudo</p>
-          </div>        
+          </div>
         </section>
-        
+
         <section id="computer">
           <div className="zoneDeJeuComputer">
             <img
@@ -22,7 +22,7 @@ function Game_zone() {
               alt="rectangle blanc transparent"
             />
             <p>Ordinateur</p>
-          </div>        
+          </div>
         </section>
         <div className="zoneDePiocheComputer" />
       </section>
