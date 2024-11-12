@@ -1,5 +1,5 @@
-import Home_display from "../components/Home_display/Home_display.tsx";
 import Header from "../components/Header/Header";
+import Home_display from "../components/Home_display/Home_display";
 
 function Home_page() {
   return (
