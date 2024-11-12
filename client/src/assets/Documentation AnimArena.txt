@@ -1,0 +1,10 @@
+Breakpoint utilisé pour la Responsive :
+1280 et 770
+
+Structure
+App.tsx --
+	Game_page-------
+			Header
+			Game_Zone----
+						???
+	Home_page-------

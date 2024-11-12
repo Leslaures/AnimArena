@@ -4,17 +4,19 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #eee;
-  margin: 0;
+html, body, #root {
+  height: 100vh;
 }
 
-#root {
-  height: 100vh;
+body {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.7;
   background-image: url("./assets/images/Animarena_bg.jpg");
   background-size: cover;
-  background-position: top;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #DAA520;
 }

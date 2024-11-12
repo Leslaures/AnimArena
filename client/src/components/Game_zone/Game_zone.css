@@ -1,0 +1,10 @@
+#zoneDeJeu {
+  display: grid;
+  grid-template-columns: 15% 2fr 2fr 15%;
+  gap: 10px;
+  text-align: center;
+  height: 100%;
+}
+p {
+  font-size: 4rem;
+}
