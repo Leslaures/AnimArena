@@ -1,0 +1,15 @@
+header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: auto;
+}
+@media screen and (max-width: 1024px) {
+  header {
+    height: 10vh;
+  }
+  #logoImgContainer {
+    img {
+      width: 80%;
+    }
+  }
+}

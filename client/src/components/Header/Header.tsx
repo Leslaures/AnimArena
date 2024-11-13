@@ -2,11 +2,11 @@ import "./Header.css";
 
 function Header() {
   return (
-    <>
-      <figure id="logo_img">
+    <header>
+      <figure id="logoImgContainer">
         <img src="../src/assets/images/animarena.png" alt="logo AnimArena" />
       </figure>
-    </>
+    </header>
   );
 }
 

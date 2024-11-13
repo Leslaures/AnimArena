@@ -1,20 +1,40 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.Game_button {
+  display: flex;
+  padding: 10px 10px;
+  margin: 5px;
+  background-color: #daa520;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 40px;
+  font-weight: bold;
+  box-shadow: 1px 5px 10px black;
+  width: 300px;
+  height: 80px;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
+  color: black;
   font-size: 16px;
+  font-weight: 900;
   line-height: 1.7;
-  color: #eee;
-  margin: 0;
-}
-
-#root {
-  height: 100vh;
   background-image: url("./assets/images/Animarena_bg.jpg");
   background-size: cover;
-  background-position: top;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #daa520;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
 }

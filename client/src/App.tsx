@@ -1,8 +1,15 @@
+import { Link } from "react-router-dom";
+
 import "./App.css";
-import Game_page from "./pages/Game_page";
 
 function App() {
-  return <Game_page />;
+  return (
+    <nav>
+      <Link to="/Jeux" className="Game_button">
+        Jouer
+      </Link>
+    </nav>
+  );
 }
 
 export default App;
