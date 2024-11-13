@@ -1,7 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.Game_button {
+  display: flex;
+  padding: 10px 10px;
+  margin: 5px;
+  background-color: #daa520;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 40px;
+  font-weight: bold;
+  box-shadow: 1px 5px 10px black;
+  width: 300px;
+  height: 80px;
 }
 
 html,
@@ -21,4 +32,9 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #daa520;
+}
+  
+ nav {
+  display: flex;
+  justify-content: center;
 }
