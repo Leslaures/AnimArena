@@ -1,0 +1,12 @@
+#gamePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+@media screen and (max-width: 1024px) {
+  #gamePage {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -15,6 +15,25 @@
   height: 80px;
 }
 
+html,
+body,
+#root {
+  height: 100vh;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.7;
+  background-image: url("./assets/images/Animarena_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #daa520;
+}
+
 nav {
   display: flex;
   justify-content: center;
