@@ -4,7 +4,7 @@ import Header from "../components/Header/Header";
 
 function Game_page() {
   return (
-    <div className="game-page">
+    <div id="gamePage">
       <Header />
       <GameRulesModal /> {/* Affiche la modale autonome */}
       <Game_zone />
