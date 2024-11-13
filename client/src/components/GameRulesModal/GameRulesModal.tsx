@@ -2,8 +2,6 @@ import { useState } from "react";
 import Modal from "react-modal";
 import "./GameRulesModal.css";
 
-// Configuration de l'élément racine pour l'accessibilité
-Modal.setAppElement("#root");
 
 function GameRulesModal() {
   // État pour gérer l'ouverture de la modale
