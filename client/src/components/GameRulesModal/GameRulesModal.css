@@ -1,0 +1,75 @@
+/* src/components/GameRulesModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Conteneur principal pour centrer le bouton */
+
+/* Game_page.css */
+.game-rules-button {
+  width: 60%;
+  max-width: 321.63px;
+  height: 12vh;
+  max-height: 86.97px;
+  background-color: #d2b48c;
+  border-radius: 10px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 2vw;
+  line-height: 1.2em;
+  color: #000000;
+  cursor: pointer;
+  position: relative;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 1px 5px 10px #00000040;
+  /* Positionnement légèrement plus bas */
+  transform: translateY(10%); /* Décale le bouton un peu plus bas */
+}
+
+/* Media queries pour ajuster les styles sur différents écrans */
+@media (max-width: 768px) {
+  .game-rules-button {
+    width: 80%;
+    font-size: 4vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-rules-button {
+    width: 90%;
+    font-size: 5vw;
+  }
+}
