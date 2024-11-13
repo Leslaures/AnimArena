@@ -2,7 +2,6 @@ import { useState } from "react";
 import Modal from "react-modal";
 import "./GameRulesModal.css";
 
-
 function GameRulesModal() {
   // État pour gérer l'ouverture de la modale
   const [isModalOpen, setModalOpen] = useState(false);
