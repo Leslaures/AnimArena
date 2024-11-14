@@ -10,20 +10,17 @@ import Home_page from "./pages/Home_page";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Home_page />
-        <App />
-      </>
-    ),
-  },
-  {
-    path: "/Jeux",
-    element: (
-      <>
-        <Game_page />
-      </>
-    ),
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home_page />,
+      },
+      {
+        path: "/game",
+        element: <Game_page />,
+      },
+    ],
   },
 ]);
 
