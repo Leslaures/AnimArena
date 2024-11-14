@@ -1,6 +1,10 @@
 import "./Game_zone.css";
 
-function Game_zone() {
+interface GamezoneProps {
+  pseudo: string;
+}
+
+function Game_zone({ pseudo }: GamezoneProps) {
   return (
     <main>
       <section id="zoneDeJeu">
@@ -14,7 +18,7 @@ function Game_zone() {
                 alt="rectangle blanc transparent"
               />
             </div>
-            <p>Pseudo</p>
+            {<p>{pseudo}</p>}
           </div>
         </section>
 
