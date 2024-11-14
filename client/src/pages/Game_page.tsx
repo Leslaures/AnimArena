@@ -7,7 +7,8 @@ function Game_page() {
   return (
     <div id="gamePage">
       <Header />
-      <GameRulesModal /> {/* Affiche la modale autonome */}
+      <GameRulesModal position="top-right-position" />{" "}
+      {/* Affiche la modale autonome */}
       <Game_zone />
     </div>
   );

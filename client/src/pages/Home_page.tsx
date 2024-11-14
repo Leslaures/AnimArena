@@ -1,13 +1,11 @@
+import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Header from "../components/Header/Header";
-import Home_display from "../components/Home_display/Home_display";
 
 function Home_page() {
   return (
     <>
       <Header />
-      <main>
-        <Home_display />
-      </main>
+      <GameRulesModal position="bottom-position" />
     </>
   );
 }

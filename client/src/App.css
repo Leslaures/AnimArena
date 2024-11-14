@@ -7,7 +7,7 @@
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 40px;
   font-weight: bold;
   box-shadow: 1px 5px 10px black;
@@ -37,4 +37,20 @@ body {
 nav {
   display: flex;
   justify-content: center;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rules-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 20px;
 }
