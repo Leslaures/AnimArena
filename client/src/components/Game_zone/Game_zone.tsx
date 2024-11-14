@@ -7,37 +7,37 @@ interface GamezoneProps {
 function Game_zone({ pseudo }: GamezoneProps) {
   return (
     <main>
-    <section id="zoneDeJeu">
-      <div className="zoneDePiochePlayer" />
+      <section id="zoneDeJeu">
+        <div className="zoneDePiochePlayer" />
 
-      <section id="player">
-        <div className="zoneDeJeuPlayer">
-          <div id="imgPlayerContainer">
-            <img
-              src="../src/assets/images/Card_Placeholder.png"
-              alt="rectangle blanc transparent"
-            />
+        <section id="player">
+          <div className="zoneDeJeuPlayer">
+            <div id="imgPlayerContainer">
+              <img
+                src="../src/assets/images/Card_Placeholder.png"
+                alt="rectangle blanc transparent"
+              />
+            </div>
+            {<p>{pseudo}</p>}
           </div>
-          {<p>{pseudo}</p>}
-        </div>
-      </section>
+        </section>
 
-      <section id="computer">
-        <div className="zoneDeJeuComputer">
-          <div id="imgComputerContainer">
-            <img
-              src="../src/assets/images/Card_Placeholder.png"
-              alt="rectangle blanc transparent"
-            />
+        <section id="computer">
+          <div className="zoneDeJeuComputer">
+            <div id="imgComputerContainer">
+              <img
+                src="../src/assets/images/Card_Placeholder.png"
+                alt="rectangle blanc transparent"
+              />
+            </div>
+            <p>Ordinateur</p>
           </div>
-          <p>Ordinateur</p>
-        </div>
-      </section>
+        </section>
 
-      <div className="zoneDePiocheComputer" />
-    </section>
-  </main>
-);
+        <div className="zoneDePiocheComputer" />
+      </section>
+    </main>
+  );
 }
 
 export default Game_zone;
