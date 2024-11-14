@@ -1,18 +1,22 @@
 .Game_button {
   display: flex;
-  padding: 10px 10px;
-  margin: 5px;
+  padding: 0.5rem 4rem;
   background-color: #daa520;
   color: black;
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: 5px;
-  font-size: 40px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-size: 3rem;
+  font-weight: 900;
   box-shadow: 1px 5px 10px black;
-  width: 300px;
-  height: 80px;
+  font-family: "Montserrat", sans-serif;
+}
+@media screen and (max-width: 1024px) {
+  .Game_button {
+    padding: 0.5rem 4rem;
+    font-size: 2rem;
+  }
 }
 
 html,

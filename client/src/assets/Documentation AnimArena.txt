@@ -1,5 +1,5 @@
 Breakpoint utilisé pour la Responsive :
-1280 et 770
+@media screen and (max-width: 1024px)
 
 Structure
 App.tsx --
