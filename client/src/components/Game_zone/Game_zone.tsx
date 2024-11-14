@@ -1,3 +1,4 @@
+import Draw_card from "../Draw_card/Draw_card";
 import "./Game_zone.css";
 
 interface GamezoneProps {
@@ -13,10 +14,7 @@ function Game_zone({ pseudo }: GamezoneProps) {
         <section id="player">
           <div className="zoneDeJeuPlayer">
             <div id="imgPlayerContainer">
-              <img
-                src="../src/assets/images/Card_Placeholder.png"
-                alt="rectangle blanc transparent"
-              />
+              <Draw_card />
             </div>
             {<p>{pseudo}</p>}
           </div>
@@ -26,8 +24,8 @@ function Game_zone({ pseudo }: GamezoneProps) {
           <div className="zoneDeJeuComputer">
             <div id="imgComputerContainer">
               <img
-                src="../src/assets/images/Card_Placeholder.png"
-                alt="rectangle blanc transparent"
+                src="../src/assets/images/carte_verso.png"
+                alt="carte verso"
               />
             </div>
             <p>Ordinateur</p>

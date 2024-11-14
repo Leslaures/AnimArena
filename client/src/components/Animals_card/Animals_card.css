@@ -1,0 +1,19 @@
+.DisplayCard {
+  background-color: #d2b48c;
+  border-radius: 15px;
+  width: 540px;
+  height: 770px;
+  border: 18px solid white;
+}
+
+.DisplayCard p {
+  font-size: 1rem;
+  padding: 0 2rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.DisplayCard ul {
+  list-style-type: none;
+  color: black;
+}

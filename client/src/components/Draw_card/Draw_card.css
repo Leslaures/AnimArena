@@ -1,0 +1,8 @@
+.buttonDrawCard {
+  background-image: url(../../assets/images/carte_verso.png);
+  background-size: cover;
+  background-position: top;
+  width: 540px;
+  height: 770px;
+  border-radius: 15px;
+}
