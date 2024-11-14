@@ -1,5 +1,5 @@
-import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import { Link, useOutletContext } from "react-router-dom";
+import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Header from "../components/Header/Header";
 import Pseudo from "../components/Pseudo/Pseudo";
 
