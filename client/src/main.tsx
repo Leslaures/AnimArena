@@ -12,9 +12,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <main>
-          <Home_page />
-        </main>
+        <Home_page />
         <App />
       </>
     ),
@@ -23,9 +21,7 @@ const router = createBrowserRouter([
     path: "/Jeux",
     element: (
       <>
-        <main>
-          <Game_page />
-        </main>
+        <Game_page />
       </>
     ),
   },
