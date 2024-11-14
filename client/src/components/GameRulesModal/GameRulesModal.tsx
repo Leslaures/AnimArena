@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import "./GameRulesModal.css";
 
-function GameRulesModal() {
+function GameRulesModal({ position = "" }) {
   // État pour gérer l'ouverture de la modale
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -13,7 +13,11 @@ function GameRulesModal() {
   return (
     <div>
       {/* Bouton pour ouvrir la modale */}
-      <button type="button" onClick={openModal} className="game-rules-button">
+      <button
+        type="button"
+        onClick={openModal}
+        className={`game-rules-button ${position}`}
+      >
         Règles du jeu
       </button>
 

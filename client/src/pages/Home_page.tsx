@@ -1,4 +1,5 @@
 import { Link, useOutletContext } from "react-router-dom";
+import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Header from "../components/Header/Header";
 import Pseudo from "../components/Pseudo/Pseudo";
 
@@ -11,6 +12,7 @@ function Home_page() {
   return (
     <>
       <Header />
+      <GameRulesModal position="bottom-position" />
       <div>
         <Pseudo pseudo={pseudo} setPseudo={setPseudo} />
 

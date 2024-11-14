@@ -10,8 +10,8 @@ function Game_page() {
   return (
     <div id="gamePage">
       <Header />
+      <GameRulesModal position="top-right-position" />{" "}
       <Game_zone pseudo={pseudo} />
-      <GameRulesModal /> {/* Affiche la modale autonome */}
     </div>
   );
 }

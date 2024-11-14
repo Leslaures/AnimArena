@@ -54,9 +54,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-shadow: 1px 5px 10px #00000040;
-  /* Positionnement légèrement plus bas */
-  transform: translateY(10%); /* Décale le bouton un peu plus bas */
+  box-shadow: 1px 5px 10px black;
+}
+/* Positionnement en bas */
+.bottom-position {
+  position: fixed;
+  bottom: 20px; /* Distance par rapport au bas */
+  left: 50%; /* Centre le bouton horizontalement */
+  transform: translateX(-50%); /* Centre le bouton précisément */
+}
+/* Position en haut à droite */
+.top-right-position {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 /* Media queries pour ajuster les styles sur différents écrans */
