@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 .Game_button {
   display: flex;
   padding: 0.5rem 4rem;
@@ -57,4 +61,43 @@ nav {
   justify-content: center;
   width: 100%;
   padding-bottom: 20px;
+}
+
+/* Bouton des règles du jeu */
+.game-rules-button-home,
+.game-rules-button-game {
+  background-color: #d2b48c;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 1px 5px 10px black;
+}
+.game-rules-button-home {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  padding: 1.5rem 4rem;
+}
+.game-rules-button-game {
+  position: fixed;
+  top: 8%;
+  right: 3%;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .game-rules-button-home,
+  .game-rules-button-game {
+    font-size: 1.5rem;
+  }
 }

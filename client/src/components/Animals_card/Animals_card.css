@@ -1,11 +1,10 @@
 .DisplayCard {
   background-color: #d2b48c;
   border-radius: 15px;
-  width: 540px;
-  height: 770px;
+  width: 23vw;
+  height: 100%;
   border: 18px solid white;
 }
-
 .DisplayCard p {
   font-size: 1rem;
   padding: 0 2rem;
