@@ -10,7 +10,7 @@ function Game_page() {
   return (
     <div id="gamePage">
       <Header />
-      <GameRulesModal position="top-right-position" />{" "}
+      <GameRulesModal />
       <Game_zone pseudo={pseudo} />
     </div>
   );

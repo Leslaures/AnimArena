@@ -21,7 +21,7 @@ function Draw_card() {
     <div className="drawCard">
       {isButtonClicked && (
         <button type="button" onClick={getAnimal} className="buttonDrawCard">
-          Clique ici pour piocher une carte
+          <p id="drawButton">Clique pour révéler ta carte</p>
         </button>
       )}
       {animal && <Animals_card animal={animal} />}

@@ -12,7 +12,6 @@ function Home_page() {
   return (
     <>
       <Header />
-      <GameRulesModal position="bottom-position" />
       <div>
         <Pseudo pseudo={pseudo} setPseudo={setPseudo} />
 
@@ -26,6 +25,7 @@ function Home_page() {
           ""
         )}
       </div>
+      <GameRulesModal />
     </>
   );
 }

@@ -1,9 +1,15 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import "./GameRulesModal.css";
+import { useLocation } from "react-router-dom";
 
-function GameRulesModal({ position = "" }) {
-  // État pour gérer l'ouverture de la modale
+function GameRulesModal() {
+  const location = useLocation();
+  const buttonClassName =
+    location.pathname === "/"
+      ? "game-rules-button-home"
+      : "game-rules-button-game";
+
   const [isModalOpen, setModalOpen] = useState(false);
 
   // Fonction pour ouvrir et fermer la modale
@@ -13,11 +19,7 @@ function GameRulesModal({ position = "" }) {
   return (
     <div>
       {/* Bouton pour ouvrir la modale */}
-      <button
-        type="button"
-        onClick={openModal}
-        className={`game-rules-button ${position}`}
-      >
+      <button type="button" onClick={openModal} className={buttonClassName}>
         Règles du jeu
       </button>
 
