@@ -1,0 +1,17 @@
+.buttonDrawCard {
+  background-image: url(../../assets/images/carte_verso.png);
+  background-size: cover;
+  background-position: top;
+  border-radius: 15px;
+  width: 15vw;
+  height: 30vh;
+  /* max-height: 50px; */
+  object-fit: contain;
+  border: none;
+}
+.drawCard {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
