@@ -17,6 +17,7 @@ const animalsLibrary = [
     longueur_cm: 250,
     longevite: 15,
     gestation_jours: 110,
+    vitesse_kmh: 80,
   },
   {
     nom: "Tigre",
@@ -30,6 +31,7 @@ const animalsLibrary = [
     longueur_cm: 300,
     longevite: 20,
     gestation_jours: 105,
+    vitesse_kmh: 65,
   },
   {
     nom: "Léopard",
@@ -43,6 +45,7 @@ const animalsLibrary = [
     longueur_cm: 190,
     longevite: 15,
     gestation_jours: 90,
+    vitesse_kmh: 58,
   },
   {
     nom: "Guépard",
@@ -56,11 +59,12 @@ const animalsLibrary = [
     longueur_cm: 150,
     longevite: 12,
     gestation_jours: 95,
+    vitesse_kmh: 110,
   },
   {
     nom: "Jaguar",
     nom_male: "Jaguar",
-    nom_femelle: "Jaguar femelle",
+    nom_femell: "Jaguar femelle",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Panthera_onca_137131959.jpg/640px-Panthera_onca_137131959.jpg",
     savais_tu:
@@ -69,6 +73,7 @@ const animalsLibrary = [
     longueur_cm: 200,
     longevite: 15,
     gestation_jours: 100,
+    vitesse_kmh: 80,
   },
   {
     nom: "Panthère des neiges",
@@ -82,6 +87,7 @@ const animalsLibrary = [
     longueur_cm: 130,
     longevite: 15,
     gestation_jours: 101,
+    vitesse_kmh: 64,
   },
   {
     nom: "Chat sauvage",
@@ -95,6 +101,7 @@ const animalsLibrary = [
     longueur_cm: 80,
     longevite: 12,
     gestation_jours: 63,
+    vitesse_kmh: 50,
   },
   {
     nom: "Caracal",
@@ -108,6 +115,7 @@ const animalsLibrary = [
     longueur_cm: 90,
     longevite: 15,
     gestation_jours: 78,
+    vitesse_kmh: 80,
   },
   {
     nom: "Lynx",
@@ -121,6 +129,7 @@ const animalsLibrary = [
     longueur_cm: 110,
     longevite: 17,
     gestation_jours: 70,
+    vitesse_kmh: 50,
   },
   {
     nom: "Serval",
@@ -134,6 +143,7 @@ const animalsLibrary = [
     longueur_cm: 85,
     longevite: 12,
     gestation_jours: 74,
+    vitesse_kmh: 80,
   },
   {
     nom: "Loup gris",
@@ -147,6 +157,7 @@ const animalsLibrary = [
     longueur_cm: 160,
     longevite: 13,
     gestation_jours: 63,
+    vitesse_kmh: 60,
   },
   {
     nom: "Renard roux",
@@ -160,6 +171,7 @@ const animalsLibrary = [
     longueur_cm: 90,
     longevite: 5,
     gestation_jours: 52,
+    vitesse_kmh: 50,
   },
   {
     nom: "Chacal",
@@ -173,6 +185,7 @@ const animalsLibrary = [
     longueur_cm: 85,
     longevite: 8,
     gestation_jours: 63,
+    vitesse_kmh: 55,
   },
   {
     nom: "Coyote",
@@ -186,6 +199,7 @@ const animalsLibrary = [
     longueur_cm: 100,
     longevite: 10,
     gestation_jours: 63,
+    vitesse_kmh: 64,
   },
   {
     nom: "Dhole",
@@ -199,6 +213,7 @@ const animalsLibrary = [
     longueur_cm: 100,
     longevite: 10,
     gestation_jours: 60,
+    vitesse_kmh: 45,
   },
   {
     nom: "Loup arctique",
@@ -212,6 +227,7 @@ const animalsLibrary = [
     longueur_cm: 150,
     longevite: 10,
     gestation_jours: 63,
+    vitesse_kmh: 60,
   },
   {
     nom: "Loup d'Éthiopie",
@@ -225,6 +241,7 @@ const animalsLibrary = [
     longueur_cm: 110,
     longevite: 8,
     gestation_jours: 60,
+    vitesse_kmh: 50,
   },
   {
     nom: "Renard polaire",
@@ -238,6 +255,7 @@ const animalsLibrary = [
     longueur_cm: 70,
     longevite: 5,
     gestation_jours: 52,
+    vitesse_kmh: 50,
   },
   {
     nom: "Ours brun",
@@ -251,6 +269,7 @@ const animalsLibrary = [
     longueur_cm: 250,
     longevite: 25,
     gestation_jours: 220,
+    vitesse_kmh: 50,
   },
   {
     nom: "Ours noir",
@@ -264,6 +283,7 @@ const animalsLibrary = [
     longueur_cm: 180,
     longevite: 20,
     gestation_jours: 220,
+    vitesse_kmh: 40,
   },
   {
     nom: "Ours polaire",
@@ -277,6 +297,7 @@ const animalsLibrary = [
     longueur_cm: 250,
     longevite: 25,
     gestation_jours: 240,
+    vitesse_kmh: 40,
   },
   {
     nom: "Ours lippu",
@@ -290,6 +311,7 @@ const animalsLibrary = [
     longueur_cm: 180,
     longevite: 20,
     gestation_jours: 210,
+    vitesse_kmh: 40,
   },
   {
     nom: "Ours à collier",
@@ -303,6 +325,7 @@ const animalsLibrary = [
     longueur_cm: 170,
     longevite: 25,
     gestation_jours: 210,
+    vitesse_kmh: 40,
   },
   {
     nom: "Hyène tachetée",
@@ -316,6 +339,7 @@ const animalsLibrary = [
     longueur_cm: 150,
     longevite: 20,
     gestation_jours: 110,
+    vitesse_kmh: 60,
   },
   {
     nom: "Hyène rayée",
@@ -329,6 +353,7 @@ const animalsLibrary = [
     longueur_cm: 130,
     longevite: 12,
     gestation_jours: 90,
+    vitesse_kmh: 50,
   },
   {
     nom: "Hyène brune",
@@ -342,6 +367,7 @@ const animalsLibrary = [
     longueur_cm: 140,
     longevite: 15,
     gestation_jours: 100,
+    vitesse_kmh: 50,
   },
   {
     nom: "Fouine",
@@ -355,6 +381,7 @@ const animalsLibrary = [
     longueur_cm: 55,
     longevite: 10,
     gestation_jours: 30,
+    vitesse_kmh: 35,
   },
   {
     nom: "Belette",
@@ -368,6 +395,7 @@ const animalsLibrary = [
     longueur_cm: 20,
     longevite: 5,
     gestation_jours: 35,
+    vitesse_kmh: 30,
   },
   {
     nom: "Martre",
@@ -381,6 +409,7 @@ const animalsLibrary = [
     longueur_cm: 55,
     longevite: 12,
     gestation_jours: 30,
+    vitesse_kmh: 32,
   },
   {
     nom: "Glouton",
@@ -394,6 +423,7 @@ const animalsLibrary = [
     longueur_cm: 100,
     longevite: 10,
     gestation_jours: 50,
+    vitesse_kmh: 30,
   },
   {
     nom: "Blaireau",
@@ -407,6 +437,7 @@ const animalsLibrary = [
     longueur_cm: 75,
     longevite: 14,
     gestation_jours: 60,
+    vitesse_kmh: 30,
   },
   {
     nom: "Loutre d'Europe",
@@ -420,6 +451,7 @@ const animalsLibrary = [
     longueur_cm: 100,
     longevite: 15,
     gestation_jours: 63,
+    vitesse_kmh: 12,
   },
   {
     nom: "Vison",
@@ -433,6 +465,7 @@ const animalsLibrary = [
     longueur_cm: 50,
     longevite: 10,
     gestation_jours: 42,
+    vitesse_kmh: 15,
   },
   {
     nom: "Civette africaine",
@@ -446,6 +479,7 @@ const animalsLibrary = [
     longueur_cm: 90,
     longevite: 15,
     gestation_jours: 60,
+    vitesse_kmh: 30,
   },
   {
     nom: "Genette",
@@ -459,6 +493,7 @@ const animalsLibrary = [
     longueur_cm: 50,
     longevite: 13,
     gestation_jours: 70,
+    vitesse_kmh: 30,
   },
   {
     nom: "Mangouste",
@@ -472,6 +507,7 @@ const animalsLibrary = [
     longueur_cm: 45,
     longevite: 10,
     gestation_jours: 60,
+    vitesse_kmh: 32,
   },
   {
     nom: "Ratel",
@@ -485,6 +521,7 @@ const animalsLibrary = [
     longueur_cm: 75,
     longevite: 24,
     gestation_jours: 180,
+    vitesse_kmh: 30,
   },
   {
     nom: "Panda roux",
@@ -498,6 +535,7 @@ const animalsLibrary = [
     longueur_cm: 60,
     longevite: 14,
     gestation_jours: 135,
+    vitesse_kmh: 24,
   },
   {
     nom: "Fossa",
@@ -511,6 +549,7 @@ const animalsLibrary = [
     longueur_cm: 80,
     longevite: 15,
     gestation_jours: 90,
+    vitesse_kmh: 56,
   },
   {
     nom: "Chien viverrin",
@@ -524,6 +563,7 @@ const animalsLibrary = [
     longueur_cm: 60,
     longevite: 10,
     gestation_jours: 60,
+    vitesse_kmh: 38,
   },
   {
     nom: "Puma",
@@ -537,6 +577,7 @@ const animalsLibrary = [
     longueur_cm: 200,
     longevite: 12,
     gestation_jours: 90,
+    vitesse_kmh: 80,
   },
   {
     nom: "Ocelot",
@@ -550,6 +591,7 @@ const animalsLibrary = [
     longueur_cm: 100,
     longevite: 20,
     gestation_jours: 70,
+    vitesse_kmh: 58,
   },
   {
     nom: "Margay",
@@ -563,6 +605,7 @@ const animalsLibrary = [
     longueur_cm: 80,
     longevite: 18,
     gestation_jours: 80,
+    vitesse_kmh: 56,
   },
   {
     nom: "Chat de Pallas",
@@ -576,6 +619,7 @@ const animalsLibrary = [
     longueur_cm: 60,
     longevite: 12,
     gestation_jours: 66,
+    vitesse_kmh: 48,
   },
   {
     nom: "Chat des sables",
@@ -589,6 +633,7 @@ const animalsLibrary = [
     longueur_cm: 50,
     longevite: 13,
     gestation_jours: 59,
+    vitesse_kmh: 40,
   },
   {
     nom: "Fennec",
@@ -602,6 +647,7 @@ const animalsLibrary = [
     longueur_cm: 40,
     longevite: 10,
     gestation_jours: 50,
+    vitesse_kmh: 32,
   },
   {
     nom: "Renard corsac",
@@ -615,6 +661,7 @@ const animalsLibrary = [
     longueur_cm: 55,
     longevite: 9,
     gestation_jours: 60,
+    vitesse_kmh: 50,
   },
   {
     nom: "Renard gris",
@@ -628,6 +675,7 @@ const animalsLibrary = [
     longueur_cm: 80,
     longevite: 6,
     gestation_jours: 53,
+    vitesse_kmh: 58,
   },
   {
     nom: "Loup rouge",
@@ -641,6 +689,7 @@ const animalsLibrary = [
     longueur_cm: 120,
     longevite: 10,
     gestation_jours: 63,
+    vitesse_kmh: 60,
   },
   {
     nom: "Chien des buissons",
@@ -654,6 +703,7 @@ const animalsLibrary = [
     longueur_cm: 65,
     longevite: 10,
     gestation_jours: 67,
+    vitesse_kmh: 48,
   },
   {
     nom: "Chihuahua",
@@ -667,6 +717,7 @@ const animalsLibrary = [
     longueur_cm: 20,
     longevite: 15,
     gestation_jours: 63,
+    vitesse_kmh: 24,
   },
   {
     nom: "Crocodile",
@@ -680,6 +731,7 @@ const animalsLibrary = [
     longueur_cm: 500,
     longevite: 70,
     gestation_jours: 90,
+    vitesse_kmh: 30,
   },
 ];
 
