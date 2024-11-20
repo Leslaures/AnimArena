@@ -1,4 +1,4 @@
-import Draw_card from "../Draw_card/Draw_card";
+import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 
 interface GamezoneProps {
@@ -9,13 +9,13 @@ function Game_zone({ pseudo }: GamezoneProps) {
   return (
     <main>
       <section id="zoneDeJeu">
-        <div className="zoneDePiochePlayer" />
+        <div className="zoneDePiochePlayer">
+          <Deck />
+        </div>
 
         <section id="player">
           <div className="zoneDeJeuPlayer">
-            <div id="imgPlayerContainer">
-              <Draw_card />
-            </div>
+            <div id="imgPlayerContainer">{/* <Draw_card /> */}</div>
             {<p>{pseudo}</p>}
           </div>
         </section>

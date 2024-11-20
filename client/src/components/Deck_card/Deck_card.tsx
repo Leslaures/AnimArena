@@ -1,9 +1,23 @@
-import "./Draw_card.css";
+import "./Deck_card.css";
 import { useState } from "react";
-import Animals_card from "../Animals_card/Animals_card";
 
-function Draw_card() {
-  const [animal, setAnimal] = useState(null);
+type AnimalType = {
+  nom: string;
+  nom_male: string;
+  nom_femelle: string;
+  image: string;
+  savais_tu: string;
+  poids_kg: number;
+  longueur_cm: number;
+  longevite: number;
+  gestation_jours: number;
+};
+
+interface Deck_cardProps {
+  setAnimal: (animal: AnimalType) => void;
+}
+
+function Deck_card({ setAnimal }: Deck_cardProps) {
   const [isButtonClicked, setIsButtonClicked] = useState(true);
 
   const getAnimal = () => {
@@ -20,12 +34,9 @@ function Draw_card() {
   return (
     <div className="drawCard">
       {isButtonClicked && (
-        <button type="button" onClick={getAnimal} className="buttonDrawCard">
-          <p id="drawButton">Clique pour révéler ta carte</p>
-        </button>
+        <button type="button" onClick={getAnimal} className="buttonDrawCard" />
       )}
-      {animal && <Animals_card animal={animal} />}
     </div>
   );
 }
-export default Draw_card;
+export default Deck_card;
