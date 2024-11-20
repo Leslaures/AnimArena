@@ -19,6 +19,10 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-image: url(../../assets/images/Card_Placeholder.png);
+  background-size: 450px 650px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .zoneDeJeuComputer,
 .zoneDeJeuPlayer {
@@ -27,6 +31,7 @@ p {
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 
 /* ///////Responsive//////// */

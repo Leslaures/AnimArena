@@ -1,4 +1,4 @@
-import "./Deck.css";
+import "./Deck_player.css";
 import Deck_card from "../Deck_card/Deck_card";
 
 type AnimalType = {
@@ -17,7 +17,7 @@ interface Deck_cardProps {
   setAnimalProp: (animal: AnimalType) => void;
 }
 
-function Deck({ setAnimalProp }: Deck_cardProps) {
+function Deck_player({ setAnimalProp }: Deck_cardProps) {
   return (
     <div id="deck">
       <Deck_card setAnimalProp={setAnimalProp} />
@@ -28,4 +28,4 @@ function Deck({ setAnimalProp }: Deck_cardProps) {
     </div>
   );
 }
-export default Deck;
+export default Deck_player;

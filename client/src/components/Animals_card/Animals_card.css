@@ -46,7 +46,7 @@ label {
   padding-bottom: 10px;
   padding-left: 15px;
 }
-label:hover {
+fieldset label:hover {
   transform: scale(1.2);
 }
 

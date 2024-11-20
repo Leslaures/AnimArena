@@ -1,4 +1,5 @@
-import Deck from "../Deck/Deck";
+import Deck_player from "../Deck_player/Deck_player";
+import Deck_computer from "../Deck_computer/Deck_computer";
 import "./Game_zone.css";
 import { useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
@@ -22,11 +23,15 @@ type AnimalType = {
 
 function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
   const [animal, setAnimalInDeck] = useState(null as null | AnimalType);
+  const [animalComputer, setAnimalComputer] = useState(
+    null as null | AnimalType,
+  );
+
   return (
     <main>
       <section id="zoneDeJeu">
         <div className="zoneDePiochePlayer">
-          <Deck setAnimalProp={setAnimalInDeck} />
+          <Deck_player setAnimalProp={setAnimalInDeck} />
         </div>
 
         <section id="player">
@@ -39,23 +44,27 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
                 />
               )}
             </div>
-            {<p>{pseudo}</p>}
+            <p>{pseudo || "Joueur"}</p>
           </div>
         </section>
 
         <section id="computer">
           <div className="zoneDeJeuComputer">
             <div id="imgComputerContainer">
-              <img
-                src="../src/assets/images/carte_verso.png"
-                alt="carte verso"
-              />
+              {animalComputer && (
+                <Animals_card
+                  animal={animalComputer}
+                  setSelectedChar={setSelectedChar}
+                />
+              )}
             </div>
             <p>Ordinateur</p>
           </div>
         </section>
 
-        <div className="zoneDePiocheComputer" />
+        <div className="zoneDePiocheComputer">
+          <Deck_computer setAnimalComputer={setAnimalComputer} />
+        </div>
       </section>
     </main>
   );

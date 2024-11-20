@@ -14,10 +14,6 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-image: url(../../assets/images/Card_Placeholder.png);
-  background-size: 104px 150px;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1024px) {
