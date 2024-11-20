@@ -24,9 +24,7 @@ function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
   };
   return (
     <figure className="DisplayCard">
-      <h3>
-        {animal.nom_male}
-      </h3>
+      <h3>{animal.nom_male}</h3>
       <figure className="animalPicture">
         <img
           src={animal.image}
