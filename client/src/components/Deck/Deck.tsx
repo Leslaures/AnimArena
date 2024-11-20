@@ -1,6 +1,4 @@
 import "./Deck.css";
-import { useState } from "react";
-import Animals_card from "../Animals_card/Animals_card";
 import Deck_card from "../Deck_card/Deck_card";
 
 type AnimalType = {
@@ -15,16 +13,18 @@ type AnimalType = {
   gestation_jours: number;
 };
 
-function Deck() {
-  const [animal, setAnimalInDeck] = useState(null as null | AnimalType);
+interface Deck_cardProps {
+  setAnimalProp: (animal: AnimalType) => void;
+}
+
+function Deck({ setAnimalProp }: Deck_cardProps) {
   return (
-    <div>
-      <Deck_card setAnimal={setAnimalInDeck} />
-      <Deck_card setAnimal={setAnimalInDeck} />
-      <Deck_card setAnimal={setAnimalInDeck} />
-      <Deck_card setAnimal={setAnimalInDeck} />
-      <Deck_card setAnimal={setAnimalInDeck} />
-      {animal && <Animals_card animal={animal} />}
+    <div id="deck">
+      <Deck_card setAnimalProp={setAnimalProp} />
+      <Deck_card setAnimalProp={setAnimalProp} />
+      <Deck_card setAnimalProp={setAnimalProp} />
+      <Deck_card setAnimalProp={setAnimalProp} />
+      <Deck_card setAnimalProp={setAnimalProp} />
     </div>
   );
 }

@@ -1,17 +1,30 @@
-.buttonDrawCard {
+.buttonDeckCard {
   background-image: url(../../assets/images/carte_verso.png);
   background-size: cover;
   background-position: top;
-  border-radius: 15px;
-  width: 15vw;
-  height: 30vh;
-  /* max-height: 50px; */
+  border-radius: 5px;
+  width: 25%;
+  height: 100%;
+  max-height: 120px;
   object-fit: contain;
   border: none;
 }
-.drawCard {
-  height: 60vh;
+.deckCard {
+  height: 100%;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .buttonDeckCard {
+    width: 90%;
+    height: 90%;
+  }
+  .deckCard {
+    height: 100%;
+    gap: 5px;
+  }
 }
