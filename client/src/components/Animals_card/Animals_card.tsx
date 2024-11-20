@@ -26,7 +26,6 @@ function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
     <figure className="DisplayCard">
       <h3>
         {animal.nom_male}
-        {/* <span className="nom_femelle"> / {animal.nom_femelle}</span> */}
       </h3>
       <figure className="animalPicture">
         <img
