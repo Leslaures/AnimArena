@@ -11,7 +11,7 @@ function Home_page() {
 
   return (
     <>
-      <Header />
+      <Header selectedChar="" />
       <div>
         <Pseudo pseudo={pseudo} setPseudo={setPseudo} />
 

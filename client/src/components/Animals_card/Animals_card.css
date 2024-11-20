@@ -1,18 +1,84 @@
 .DisplayCard {
   background-color: #d2b48c;
   border-radius: 15px;
-  width: 23vw;
-  height: 100%;
   border: 18px solid white;
+  height: 650px;
+  width: 450px;
+  object-fit: contain;
+}
+.animalPicture {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.animalPicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .DisplayCard p {
   font-size: 1rem;
   padding: 0 2rem;
   margin-bottom: 20px;
   color: black;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: 700;
 }
-
-.DisplayCard ul {
+.DisplayCard h3 {
+  font-size: 2rem;
+  text-align: left;
+  padding-left: 10px;
+}
+fieldset {
   list-style-type: none;
   color: black;
+  text-align: left;
+  padding-left: 10px;
+}
+label {
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+label:hover {
+  transform: scale(1.2);
+}
+
+/* ///////////////Responsive//////////////////// */
+@media screen and (max-width: 1024px) {
+  .nom_femelle {
+    display: none;
+  }
+  .DisplayCard {
+    width: 50%;
+    height: 40%;
+    border: 0.4rem solid white;
+    border-radius: 10px;
+  }
+  .DisplayCard p {
+    font-size: 0.5rem;
+    padding: 0;
+    margin-bottom: 10px;
+    color: black;
+  }
+  .DisplayCard h3 {
+    font-size: 0.8rem;
+  }
+  .DisplayCard ul li {
+    list-style-type: none;
+    color: black;
+    font-size: 0.5rem;
+    padding: 0;
+  }
+  .DisplayCard ul {
+    padding: 0;
+    text-align: left;
+    padding-left: 10px;
+  }
 }

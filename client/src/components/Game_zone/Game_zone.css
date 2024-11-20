@@ -5,33 +5,42 @@
   text-align: center;
   height: 100%;
 }
+main {
+  height: 100%;
+}
 p {
   font-size: 4rem;
 }
 #imgPlayerContainer,
 #imgComputerContainer {
-  height: 60vh;
+  height: 650px;
+  width: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
-#imgPlayerContainer img,
-#imgComputerContainer img {
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
+.zoneDeJeuComputer,
+.zoneDeJeuPlayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
+/* ///////Responsive//////// */
+
 @media screen and (max-width: 1024px) {
   #zoneDeJeu {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0fr 1fr 1fr 1fr;
     grid-template-areas: "item4" "item3" "item2" "item1";
-    gap: 10px;
+    row-gap: 5px;
     margin: 0 auto;
     text-align: center;
-    height: 80vh;
+    height: 95%;
   }
   #computer {
     grid-area: item3;
@@ -49,14 +58,16 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 60vh;
     p {
       font-size: 2rem;
     }
   }
   .zoneDePiochePlayer {
     grid-area: item1;
-    height: 18vh;
+    height: 15vh;
     width: auto;
+    margin-bottom: 0.5rem;
   }
   .zoneDePiocheComputer {
     grid-area: item4;
@@ -64,7 +75,7 @@ p {
   }
   #imgComputerContainer {
     width: auto;
-    height: 20vh;
+    height: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;

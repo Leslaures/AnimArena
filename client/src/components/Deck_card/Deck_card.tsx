@@ -14,10 +14,10 @@ type AnimalType = {
 };
 
 interface Deck_cardProps {
-  setAnimal: (animal: AnimalType) => void;
+  setAnimalProp: (animal: AnimalType) => void;
 }
 
-function Deck_card({ setAnimal }: Deck_cardProps) {
+function Deck_card({ setAnimalProp }: Deck_cardProps) {
   const [isButtonClicked, setIsButtonClicked] = useState(true);
 
   const getAnimal = () => {
@@ -26,15 +26,15 @@ function Deck_card({ setAnimal }: Deck_cardProps) {
       .then((data) => {
         console.info(data);
         const randomIndex = Math.floor(Math.random() * data.results.length);
-        setAnimal(data.results[randomIndex]);
+        setAnimalProp(data.results[randomIndex]);
         setIsButtonClicked(false);
       })
       .catch((error) => console.error(error));
   };
   return (
-    <div className="drawCard">
+    <div className="deckCard">
       {isButtonClicked && (
-        <button type="button" onClick={getAnimal} className="buttonDrawCard" />
+        <button type="button" onClick={getAnimal} className="buttonDeckCard" />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 header {
   text-align: center;
   width: 100%;
-  margin-bottom: auto;
+  margin-bottom: 2%;
 }
 @media screen and (max-width: 1024px) {
   header {
