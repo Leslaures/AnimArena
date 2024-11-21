@@ -1,11 +1,14 @@
-import Deck from "../Deck/Deck";
-import "./Game_zone.css";
 import { useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
+import Deck from "../Deck/Deck";
+import "./Game_zone.css";
 
 interface GamezoneProps {
   pseudo: string;
+  selectedChar: string;
   setSelectedChar: (selectedChar: string) => void;
+  setCharacteristicValidated: (validated: boolean) => void;
+  animalComputer: AnimalType | null;
 }
 
 type AnimalType = {
@@ -20,11 +23,14 @@ type AnimalType = {
   gestation_jours: number;
 };
 
-function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
-  const [animal, setAnimalInDeck] = useState(null as null | AnimalType);
-  const [animalComputer, setAnimalComputer] = useState(
-    null as null | AnimalType,
-  );
+function Game_zone({
+  pseudo,
+  selectedChar,
+  setSelectedChar,
+  setCharacteristicValidated,
+  animalComputer,
+}: GamezoneProps) {
+  const [animal, setAnimalInDeck] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showAnimalCard, setShowAnimalCard] = useState(false);
 
@@ -33,17 +39,10 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
     setShowVersoCard(true);
   };
 
-  const handleSetAnimalCPU = (animalComputer: AnimalType) => {
-    setAnimalComputer(animalComputer);
-    setShowVersoCard(true);
+  const handleVersoClick = () => {
+    setShowAnimalCard(true);
   };
 
-  const handleVersoClickP1 = () => {
-    setShowAnimalCard(true);
-  };
-  const handleVersoClickCPU = () => {
-    setShowAnimalCard(true);
-  };
   return (
     <main>
       <section id="zoneDeJeu">
@@ -61,13 +60,17 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
               className={
                 showVersoCard && !showAnimalCard ? "backgroundImage" : ""
               }
-              onClick={handleVersoClickP1}
-              onKeyUp={handleVersoClickP1}
+              onClick={handleVersoClick}
+              onKeyUp={handleVersoClick}
             >
               {showAnimalCard && animal && (
                 <Animals_card
                   animal={animal}
+                  selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
+                  onValidateCharacteristic={() =>
+                    setCharacteristicValidated(true)
+                  }
                 />
               )}
             </div>
@@ -79,16 +82,16 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
           <div className="zoneDeJeuComputer">
             <div
               id="imgComputerContainer"
-              className={
-                showVersoCard && !showAnimalCard ? "backgroundImage" : ""
-              }
-              onClick={handleVersoClickCPU}
-              onKeyUp={handleVersoClickCPU}
+              className={showVersoCard ? "backgroundImage" : ""}
             >
-              {showAnimalCard && animalComputer && (
+              {animalComputer && (
                 <Animals_card
                   animal={animalComputer}
+                  selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
+                  onValidateCharacteristic={() =>
+                    setCharacteristicValidated(true)
+                  }
                 />
               )}
             </div>
@@ -98,7 +101,7 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
 
         <div className="zoneDePiocheComputer">
           <Deck
-            setAnimalProp={handleSetAnimalCPU}
+            setAnimalProp={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
           />
         </div>

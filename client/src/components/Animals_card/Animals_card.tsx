@@ -1,7 +1,6 @@
 import "./Animals_card.css";
 
 interface Animals_cardProps {
-  setSelectedChar: (selectedChar: string) => void;
   animal: {
     nom_male: string;
     nom_femelle: string;
@@ -12,25 +11,35 @@ interface Animals_cardProps {
     longevite: number;
     gestation_jours: number;
   };
+  selectedChar: string;
+  setSelectedChar: (selectedChar: string) => void;
+  onValidateCharacteristic: () => void;
 }
 
-function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
+function Animals_card({
+  animal,
+  setSelectedChar,
+  onValidateCharacteristic,
+}: Animals_cardProps) {
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedChar(event.target.value);
+    const value = event.target.value;
+    setSelectedChar(value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    onValidateCharacteristic();
   };
+
   return (
     <figure className="DisplayCard">
       <h3>{animal.nom_male}</h3>
-      <figure className="animalPicture">
+      <div className="animalPicture">
         <img
           src={animal.image}
           alt={`${animal.nom_male} / ${animal.nom_femelle}`}
         />
-      </figure>
+      </div>
       <p className="did_you_know">{animal.savais_tu}</p>
       <form onSubmit={handleSubmit}>
         <fieldset>
@@ -44,7 +53,6 @@ function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
             />
             <label htmlFor="poids">Poids : {animal.poids_kg} kg</label>
           </div>
-
           <div>
             <input
               type="radio"
@@ -55,33 +63,30 @@ function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
             />
             <label htmlFor="longueur">Longueur : {animal.longueur_cm} cm</label>
           </div>
-
           <div>
             <input
               type="radio"
-              id="Longevite"
+              id="longevite"
               name="characteristic"
               value={`Longévité : ${animal.longevite} ans`}
               onChange={handleCharacteristic}
             />
-            <label htmlFor="Longevite">
+            <label htmlFor="longevite">
               Longévité : {animal.longevite} ans
             </label>
           </div>
-
           <div>
             <input
               type="radio"
-              id="Gestation"
+              id="gestation"
               name="characteristic"
               value={`Gestation : ${animal.gestation_jours} jours`}
               onChange={handleCharacteristic}
             />
-            <label htmlFor="Gestation">
+            <label htmlFor="gestation">
               Gestation : {animal.gestation_jours} jours
             </label>
           </div>
-
           <div>
             <button type="submit">Valides-tu cette caractéristique ?</button>
           </div>
