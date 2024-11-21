@@ -2,9 +2,10 @@
   background-color: #d2b48c;
   border-radius: 15px;
   border: 18px solid white;
-  height: 650px;
-  width: 450px;
+  height: 600px;
+  width: 415px;
   object-fit: contain;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 .animalPicture {
   height: 30%;

@@ -13,14 +13,14 @@ p {
 }
 #imgPlayerContainer,
 #imgComputerContainer {
-  height: 650px;
-  width: 450px;
+  height: 600px;
+  width: 415px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background-image: url(../../assets/images/Card_Placeholder.png);
-  background-size: 450px 650px;
+  background-size: 415px 600px;
   background-position: center;
   background-repeat: no-repeat;
 }

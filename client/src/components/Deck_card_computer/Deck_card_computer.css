@@ -3,10 +3,11 @@
   background-size: cover;
   background-position: top;
   border-radius: 5px;
-  height: 150px;
-  width: 104px;
+  height: 130px;
+  width: 90px;
   object-fit: contain;
   border: none;
+  padding: 0;
 }
 .deckCard {
   width: auto;
@@ -14,6 +15,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  background-image: url(../../assets/images/Card_Placeholder.png);
+  background-size: 90px 130px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1024px) {

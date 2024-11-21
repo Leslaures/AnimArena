@@ -1,5 +1,5 @@
-import Deck_player from "../Deck_player/Deck_player";
 import Deck_computer from "../Deck_computer/Deck_computer";
+import Deck_player from "../Deck_player/Deck_player";
 import "./Game_zone.css";
 import { useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
