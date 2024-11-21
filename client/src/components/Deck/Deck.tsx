@@ -11,6 +11,7 @@ type AnimalType = {
   longueur_cm: number;
   longevite: number;
   gestation_jours: number;
+  vitesse_kmh: number;
 };
 
 interface Deck_cardProps {
