@@ -30,17 +30,22 @@ function Game_zone({
   setCharacteristicValidated,
   animalComputer,
 }: GamezoneProps) {
-  const [animal, setAnimalInDeck] = useState<AnimalType | null>(null);
+  const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
-  const [showAnimalCard, setShowAnimalCard] = useState(false);
+  const [showRectoCard, setShowRectoCard] = useState(false);
+  const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
 
   const handleSetAnimalP1 = (animal: AnimalType) => {
-    setAnimalInDeck(animal);
+    setAnimalP1(animal);
     setShowVersoCard(true);
+    const timer = setTimeout(() => {
+      setshowVersoCardCPU(true);
+    }, 1000);
+    return () => clearTimeout(timer);
   };
 
   const handleVersoClick = () => {
-    setShowAnimalCard(true);
+    setShowRectoCard(true);
   };
 
   return (
@@ -58,12 +63,12 @@ function Game_zone({
             <div
               id="imgPlayerContainer"
               className={
-                showVersoCard && !showAnimalCard ? "backgroundImage" : ""
+                showVersoCard && !showRectoCard ? "backgroundImage" : ""
               }
               onClick={handleVersoClick}
               onKeyUp={handleVersoClick}
             >
-              {showAnimalCard && animal && (
+              {showRectoCard && animal && (
                 <Animals_card
                   animal={animal}
                   selectedChar={selectedChar}
@@ -82,7 +87,7 @@ function Game_zone({
           <div className="zoneDeJeuComputer">
             <div
               id="imgComputerContainer"
-              className={showVersoCard ? "backgroundImage" : ""}
+              className={showVersoCardCPU ? "backgroundImage" : ""}
             >
               {animalComputer && (
                 <Animals_card

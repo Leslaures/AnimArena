@@ -27,7 +27,10 @@ function Game_page() {
 
   useEffect(() => {
     if (characteristicValidated) {
-      playComputerTurn();
+      const timer = setTimeout(() => {
+        playComputerTurn();
+      }, 1000);
+      return () => clearTimeout(timer);
     }
   }, [characteristicValidated]);
 

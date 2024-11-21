@@ -2,6 +2,7 @@ import "./Animals_card.css";
 
 interface Animals_cardProps {
   animal: {
+    nom: string;
     nom_male: string;
     nom_femelle: string;
     image: string;
@@ -33,7 +34,7 @@ function Animals_card({
 
   return (
     <figure className="DisplayCard">
-      <h3>{animal.nom_male}</h3>
+      <h3>{animal.nom}</h3>
       <div className="animalPicture">
         <img
           src={animal.image}
