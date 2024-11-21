@@ -18,6 +18,7 @@ type AnimalType = {
   longueur_cm: number;
   longevite: number;
   gestation_jours: number;
+  vitesse_kmh: number;
 };
 
 function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
