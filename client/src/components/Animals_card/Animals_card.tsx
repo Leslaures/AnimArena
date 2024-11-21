@@ -9,18 +9,20 @@ interface Animals_cardProps {
     savais_tu: string;
     poids_kg: number;
     longueur_cm: number;
-    longevite: number;
+    longevite_ans: number;
     gestation_jours: number;
   };
   selectedChar: string;
   setSelectedChar: (selectedChar: string) => void;
   onValidateCharacteristic: () => void;
+  isP1: boolean;
 }
 
 function Animals_card({
   animal,
   setSelectedChar,
   onValidateCharacteristic,
+  isP1,
 }: Animals_cardProps) {
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -46,6 +48,7 @@ function Animals_card({
         <fieldset>
           <div>
             <input
+              className={isP1 ? "" : "CPU"}
               type="radio"
               id="poids"
               name="characteristic"
@@ -56,6 +59,7 @@ function Animals_card({
           </div>
           <div>
             <input
+              className={isP1 ? "" : "CPU"}
               type="radio"
               id="longueur"
               name="characteristic"
@@ -66,18 +70,20 @@ function Animals_card({
           </div>
           <div>
             <input
+              className={isP1 ? "" : "CPU"}
               type="radio"
               id="longevite"
               name="characteristic"
-              value={`Longévité : ${animal.longevite} ans`}
+              value={`Longévité : ${animal.longevite_ans} ans`}
               onChange={handleCharacteristic}
             />
             <label htmlFor="longevite">
-              Longévité : {animal.longevite} ans
+              Longévité : {animal.longevite_ans} ans
             </label>
           </div>
           <div>
             <input
+              className={isP1 ? "" : "CPU"}
               type="radio"
               id="gestation"
               name="characteristic"
@@ -88,7 +94,7 @@ function Animals_card({
               Gestation : {animal.gestation_jours} jours
             </label>
           </div>
-          <div>
+          <div className={isP1 ? "" : "CPU"}>
             <button type="submit">Valides-tu cette caractéristique ?</button>
           </div>
         </fieldset>

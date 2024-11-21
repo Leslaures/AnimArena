@@ -9,37 +9,43 @@ type AnimalType = {
   savais_tu: string;
   poids_kg: number;
   longueur_cm: number;
-  longevite: number;
+  longevite_ans: number;
   gestation_jours: number;
 };
 
 interface Deck_cardProps {
-  setAnimalProp: (animal: AnimalType) => void;
+  handleSetAnimalP1: (animal: AnimalType) => void;
   setShowVersoCard: (show: boolean) => void;
+  isP1: boolean;
 }
 
-function Deck({ setAnimalProp, setShowVersoCard }: Deck_cardProps) {
+function Deck({ isP1, handleSetAnimalP1, setShowVersoCard }: Deck_cardProps) {
   return (
     <div id="deck">
       <Deck_card
-        setAnimalProp={setAnimalProp}
+        handleSetAnimalP1={handleSetAnimalP1}
         setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
       />
       <Deck_card
-        setAnimalProp={setAnimalProp}
+        handleSetAnimalP1={handleSetAnimalP1}
         setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
       />
       <Deck_card
-        setAnimalProp={setAnimalProp}
+        handleSetAnimalP1={handleSetAnimalP1}
         setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
       />
       <Deck_card
-        setAnimalProp={setAnimalProp}
+        handleSetAnimalP1={handleSetAnimalP1}
         setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
       />
       <Deck_card
-        setAnimalProp={setAnimalProp}
+        handleSetAnimalP1={handleSetAnimalP1}
         setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
       />
     </div>
   );

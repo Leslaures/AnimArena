@@ -9,30 +9,38 @@ type AnimalType = {
   savais_tu: string;
   poids_kg: number;
   longueur_cm: number;
-  longevite: number;
+  longevite_ans: number;
   gestation_jours: number;
 };
 
 interface Deck_cardProps {
-  setAnimalProp: (animal: AnimalType) => void;
+  handleSetAnimalP1: (animal: AnimalType) => void;
   setShowVersoCard: (show: boolean) => void;
+  isP1: boolean;
 }
 
-function Deck_card({ setAnimalProp, setShowVersoCard }: Deck_cardProps) {
+function Deck_card({
+  isP1,
+  handleSetAnimalP1,
+  setShowVersoCard,
+}: Deck_cardProps) {
   const [isButtonClicked, setIsButtonClicked] = useState(true);
 
   const getAnimal = () => {
-    fetch("http://localhost:3310/api/animalsLibrary")
-      .then((response) => response.json())
-      .then((data) => {
-        console.info(data);
-        const randomIndex = Math.floor(Math.random() * data.results.length);
-        setAnimalProp(data.results[randomIndex]);
-        setIsButtonClicked(false);
-        setShowVersoCard(true);
-      })
-      .catch((error) => console.error(error));
+    if (isP1 === true) {
+      fetch("http://localhost:3310/api/animalsLibrary")
+        .then((response) => response.json())
+        .then((data) => {
+          console.info(data);
+          const randomIndex = Math.floor(Math.random() * data.results.length);
+          handleSetAnimalP1(data.results[randomIndex]);
+          setIsButtonClicked(false);
+          setShowVersoCard(true);
+        })
+        .catch((error) => console.error(error));
+    }
   };
+
   return (
     <div className="deckCard">
       {isButtonClicked && (

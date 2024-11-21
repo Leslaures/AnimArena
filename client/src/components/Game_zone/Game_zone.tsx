@@ -19,7 +19,7 @@ type AnimalType = {
   savais_tu: string;
   poids_kg: number;
   longueur_cm: number;
-  longevite: number;
+  longevite_ans: number;
   gestation_jours: number;
 };
 
@@ -53,8 +53,9 @@ function Game_zone({
       <section id="zoneDeJeu">
         <div className="zoneDePiochePlayer">
           <Deck
-            setAnimalProp={handleSetAnimalP1}
+            handleSetAnimalP1={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
+            isP1={true}
           />
         </div>
 
@@ -70,6 +71,7 @@ function Game_zone({
             >
               {showRectoCard && animal && (
                 <Animals_card
+                  isP1={true}
                   animal={animal}
                   selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
@@ -91,6 +93,7 @@ function Game_zone({
             >
               {animalComputer && (
                 <Animals_card
+                  isP1={false}
                   animal={animalComputer}
                   selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
@@ -106,8 +109,9 @@ function Game_zone({
 
         <div className="zoneDePiocheComputer">
           <Deck
-            setAnimalProp={handleSetAnimalP1}
+            handleSetAnimalP1={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
+            isP1={false}
           />
         </div>
       </section>
