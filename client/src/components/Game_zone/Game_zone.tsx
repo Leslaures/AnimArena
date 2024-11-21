@@ -1,5 +1,4 @@
-import Deck_computer from "../Deck_computer/Deck_computer";
-import Deck_player from "../Deck_player/Deck_player";
+import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 import { useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
@@ -26,18 +25,46 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
   const [animalComputer, setAnimalComputer] = useState(
     null as null | AnimalType,
   );
+  const [showVersoCard, setShowVersoCard] = useState(false);
+  const [showAnimalCard, setShowAnimalCard] = useState(false);
 
+  const handleSetAnimalP1 = (animal: AnimalType) => {
+    setAnimalInDeck(animal);
+    setShowVersoCard(true);
+  };
+
+  const handleSetAnimalCPU = (animalComputer: AnimalType) => {
+    setAnimalComputer(animalComputer);
+    setShowVersoCard(true);
+  };
+
+  const handleVersoClickP1 = () => {
+    setShowAnimalCard(true);
+  };
+  const handleVersoClickCPU = () => {
+    setShowAnimalCard(true);
+  };
   return (
     <main>
       <section id="zoneDeJeu">
         <div className="zoneDePiochePlayer">
-          <Deck_player setAnimalProp={setAnimalInDeck} />
+          <Deck
+            setAnimalProp={handleSetAnimalP1}
+            setShowVersoCard={setShowVersoCard}
+          />
         </div>
 
         <section id="player">
           <div className="zoneDeJeuPlayer">
-            <div id="imgPlayerContainer">
-              {animal && (
+            <div
+              id="imgPlayerContainer"
+              className={
+                showVersoCard && !showAnimalCard ? "backgroundImage" : ""
+              }
+              onClick={handleVersoClickP1}
+              onKeyUp={handleVersoClickP1}
+            >
+              {showAnimalCard && animal && (
                 <Animals_card
                   animal={animal}
                   setSelectedChar={setSelectedChar}
@@ -50,8 +77,15 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
 
         <section id="computer">
           <div className="zoneDeJeuComputer">
-            <div id="imgComputerContainer">
-              {animalComputer && (
+            <div
+              id="imgComputerContainer"
+              className={
+                showVersoCard && !showAnimalCard ? "backgroundImage" : ""
+              }
+              onClick={handleVersoClickCPU}
+              onKeyUp={handleVersoClickCPU}
+            >
+              {showAnimalCard && animalComputer && (
                 <Animals_card
                   animal={animalComputer}
                   setSelectedChar={setSelectedChar}
@@ -63,7 +97,10 @@ function Game_zone({ pseudo, setSelectedChar }: GamezoneProps) {
         </section>
 
         <div className="zoneDePiocheComputer">
-          <Deck_computer setAnimalComputer={setAnimalComputer} />
+          <Deck
+            setAnimalProp={handleSetAnimalCPU}
+            setShowVersoCard={setShowVersoCard}
+          />
         </div>
       </section>
     </main>

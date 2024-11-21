@@ -15,9 +15,10 @@ type AnimalType = {
 
 interface Deck_cardProps {
   setAnimalProp: (animal: AnimalType) => void;
+  setShowVersoCard: (show: boolean) => void;
 }
 
-function Deck_card({ setAnimalProp }: Deck_cardProps) {
+function Deck_card({ setAnimalProp, setShowVersoCard }: Deck_cardProps) {
   const [isButtonClicked, setIsButtonClicked] = useState(true);
 
   const getAnimal = () => {
@@ -28,6 +29,7 @@ function Deck_card({ setAnimalProp }: Deck_cardProps) {
         const randomIndex = Math.floor(Math.random() * data.results.length);
         setAnimalProp(data.results[randomIndex]);
         setIsButtonClicked(false);
+        setShowVersoCard(true);
       })
       .catch((error) => console.error(error));
   };
