@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
 import Header from "../components/Header/Header";
@@ -20,8 +20,13 @@ export type AnimalType = {
 
 function Game_page() {
   const { pseudo } = useOutletContext<{ pseudo: string }>();
-
+  const navigate = useNavigate(); // Pour naviguer entre les pages
   const [selectedChar, setSelectedChar] = useState<string>("");
+
+  const handleEncyclopediaClick = () => {
+    navigate("/encyclopedia");
+  };
+
   const [characteristicValidated, setCharacteristicValidated] =
     useState<boolean>(false);
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
@@ -51,6 +56,7 @@ function Game_page() {
         <Header selectedChar={selectedChar} />
         <GameRulesModal />
       </div>
+
       <Game_zone
         pseudo={pseudo}
         selectedChar={selectedChar}
@@ -58,6 +64,14 @@ function Game_page() {
         setCharacteristicValidated={setCharacteristicValidated}
         animalComputer={animalComputer}
       />
+      {/* Bouton vers l'Encyclopédie */}
+      <button
+        type="button"
+        onClick={handleEncyclopediaClick}
+        className="encyclopedia-button"
+      >
+        Voir l'Encyclopédie
+      </button>
     </div>
   );
 }

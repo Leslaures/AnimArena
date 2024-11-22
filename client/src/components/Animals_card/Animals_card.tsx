@@ -1,18 +1,8 @@
+import type { AnimalType } from "../../pages/Game_page";
 import "./Animals_card.css";
 
 interface Animals_cardProps {
-  animal: {
-    nom: string;
-    nom_male: string;
-    nom_femelle: string;
-    image: string;
-    savais_tu: string;
-    poids_kg: number;
-    longueur_cm: number;
-    longevite_ans: number;
-    gestation_jours: number;
-    vitesse_kmh: number;
-  };
+  animal: AnimalType;
   selectedChar: string;
   setSelectedChar: (selectedChar: string) => void;
   onValidateCharacteristic: () => void;

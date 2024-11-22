@@ -1,0 +1,36 @@
+.encyclopedia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.search-bar {
+  width: 80%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 2px solid #d2b48c;
+  border-radius: 8px;
+}
+
+.encyclopedia-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #daa520;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navigation-button:hover {
+  background-color: #b8860b;
+}
