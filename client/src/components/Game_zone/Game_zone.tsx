@@ -2,6 +2,7 @@ import { useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
 import Deck from "../Deck/Deck";
 import "./Game_zone.css";
+import type { AnimalType } from "../../pages/Game_page";
 
 interface GamezoneProps {
   pseudo: string;
@@ -10,18 +11,6 @@ interface GamezoneProps {
   setCharacteristicValidated: (validated: boolean) => void;
   animalComputer: AnimalType | null;
 }
-
-type AnimalType = {
-  nom: string;
-  nom_male: string;
-  nom_femelle: string;
-  image: string;
-  savais_tu: string;
-  poids_kg: number;
-  longueur_cm: number;
-  longevite_ans: number;
-  gestation_jours: number;
-};
 
 function Game_zone({
   pseudo,

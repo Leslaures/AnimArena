@@ -1,17 +1,6 @@
 import "./Deck_card.css";
 import { useState } from "react";
-
-type AnimalType = {
-  nom: string;
-  nom_male: string;
-  nom_femelle: string;
-  image: string;
-  savais_tu: string;
-  poids_kg: number;
-  longueur_cm: number;
-  longevite_ans: number;
-  gestation_jours: number;
-};
+import type { AnimalType } from "../../pages/Game_page";
 
 interface Deck_cardProps {
   handleSetAnimalP1: (animal: AnimalType) => void;

@@ -5,7 +5,7 @@ import Header from "../components/Header/Header";
 import "./Game_page.css";
 import { useEffect, useState } from "react";
 
-type AnimalType = {
+export type AnimalType = {
   nom: string;
   nom_male: string;
   nom_femelle: string;
@@ -15,6 +15,7 @@ type AnimalType = {
   longueur_cm: number;
   longevite_ans: number;
   gestation_jours: number;
+  vitesse_kmh: number;
 };
 
 function Game_page() {
