@@ -16,7 +16,7 @@ type AnimalType = {
   savais_tu: string;
   poids_kg: number;
   longueur_cm: number;
-  longevite: number;
+  longevite_ans: number;
   gestation_jours: number;
   vitesse_kmh: number;
 };

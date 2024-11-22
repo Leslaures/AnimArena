@@ -9,7 +9,7 @@ interface Animals_cardProps {
     savais_tu: string;
     poids_kg: number;
     longueur_cm: number;
-    longevite: number;
+    longevite_ans: number;
     gestation_jours: number;
     vitesse_kmh: number;
   };
@@ -73,11 +73,11 @@ function Animals_card({ animal, setSelectedChar }: Animals_cardProps) {
               type="radio"
               id="Longevite"
               name="characteristic"
-              value={`Longévité : ${animal.longevite} ans`}
+              value={`Longévité : ${animal.longevite_ans} ans`}
               onChange={handleCharacteristic}
             />
             <label htmlFor="Longevite">
-              Longévité : {animal.longevite} ans
+              Longévité : {animal.longevite_ans} ans
             </label>
           </div>
 
