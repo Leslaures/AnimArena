@@ -109,6 +109,9 @@ function EncyclopediaPage() {
           <Animals_card
             animal={animals[currentAnimalIndex]}
             setSelectedChar={() => {}}
+            onValidateCharacteristic={() => {}}
+            isP1={false}
+            selectedChar={""}
           />
           <button
             type="button"
