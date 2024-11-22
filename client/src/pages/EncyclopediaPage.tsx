@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import Animals_card from "../components/Animals_card/Animals_card";
 import "./EncyclopediaPage.css";
-
-type AnimalType = {
-  nom: string;
-  nom_male: string;
-  nom_femelle: string;
-  image: string;
-  savais_tu: string;
-  poids_kg: number;
-  longueur_cm: number;
-  longevite_ans: number;
-  gestation_jours: number;
-  vitesse_kmh: number;
-};
+import type { AnimalType } from "../../pages/Game_page";
 
 function EncyclopediaPage() {
   const [animals, setAnimals] = useState<AnimalType[]>([]);
