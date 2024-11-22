@@ -13,13 +13,24 @@ p {
 }
 #imgPlayerContainer,
 #imgComputerContainer {
-  height: 650px;
-  width: 450px;
+  height: 600px;
+  width: 415px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-image: url(../../assets/images/Card_Placeholder.png);
+  background-size: 415px 600px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+.backgroundImage {
+  background-image: url(../../assets/images/carte_verso.png) !important;
+  background-size: 415px 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .zoneDeJeuComputer,
 .zoneDeJeuPlayer {
   display: flex;
@@ -27,6 +38,18 @@ p {
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
+}
+#imgPlayerContainer {
+  height: 600px;
+  width: 415px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ///////Responsive//////// */

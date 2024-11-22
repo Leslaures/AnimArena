@@ -1,31 +1,41 @@
 import "./Deck.css";
+import type { AnimalType } from "../../pages/Game_page";
 import Deck_card from "../Deck_card/Deck_card";
 
-type AnimalType = {
-  nom: string;
-  nom_male: string;
-  nom_femelle: string;
-  image: string;
-  savais_tu: string;
-  poids_kg: number;
-  longueur_cm: number;
-  longevite: number;
-  gestation_jours: number;
-  vitesse_kmh: number;
-};
-
 interface Deck_cardProps {
-  setAnimalProp: (animal: AnimalType) => void;
+  handleSetAnimalP1: (animal: AnimalType) => void;
+  setShowVersoCard: (show: boolean) => void;
+  isP1: boolean;
 }
 
-function Deck({ setAnimalProp }: Deck_cardProps) {
+function Deck({ isP1, handleSetAnimalP1, setShowVersoCard }: Deck_cardProps) {
   return (
     <div id="deck">
-      <Deck_card setAnimalProp={setAnimalProp} />
-      <Deck_card setAnimalProp={setAnimalProp} />
-      <Deck_card setAnimalProp={setAnimalProp} />
-      <Deck_card setAnimalProp={setAnimalProp} />
-      <Deck_card setAnimalProp={setAnimalProp} />
+      <Deck_card
+        handleSetAnimalP1={handleSetAnimalP1}
+        setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
+      />
+      <Deck_card
+        handleSetAnimalP1={handleSetAnimalP1}
+        setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
+      />
+      <Deck_card
+        handleSetAnimalP1={handleSetAnimalP1}
+        setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
+      />
+      <Deck_card
+        handleSetAnimalP1={handleSetAnimalP1}
+        setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
+      />
+      <Deck_card
+        handleSetAnimalP1={handleSetAnimalP1}
+        setShowVersoCard={setShowVersoCard}
+        isP1={isP1}
+      />
     </div>
   );
 }

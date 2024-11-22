@@ -6,7 +6,7 @@ interface selectedChar {
 
 function Selected_characteristic({ selectedChar }: selectedChar) {
   return (
-    <div>
+    <div id="selected_char">
       <h1>{selectedChar}</h1>
     </div>
   );
