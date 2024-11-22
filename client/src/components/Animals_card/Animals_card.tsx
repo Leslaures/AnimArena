@@ -11,6 +11,7 @@ interface Animals_cardProps {
     longueur_cm: number;
     longevite_ans: number;
     gestation_jours: number;
+    vitesse_kmh: number;
   };
   selectedChar: string;
   setSelectedChar: (selectedChar: string) => void;
@@ -50,6 +51,17 @@ function Animals_card({
           <div>
             <input
               className={isP1 ? "" : "CPU"}
+              type="radio"
+              id="vitesse"
+              name="characteristic"
+              value={`Vitesse : ${animal.vitesse_kmh} km/h`}
+              onChange={handleCharacteristic}
+            />
+            <label htmlFor="vitesse">Vitesse : {animal.vitesse_kmh} km/h</label>
+          </div>
+
+          <div>
+            <input
               type="radio"
               id="poids"
               name="characteristic"
