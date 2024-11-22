@@ -40,6 +40,7 @@ function Game_zone({
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
+      //défausse deckcard CPU ?
     }, 1000);
     return () => clearTimeout(timer);
   };
