@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import EncyclopediaPage from "./pages/EncyclopediaPage";
 import Game_page from "./pages/Game_page";
 import Home_page from "./pages/Home_page";
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/game",
         element: <Game_page />,
+      },
+      {
+        path: "/encyclopedia",
+        element: <EncyclopediaPage />, // Nouvelle page
       },
     ],
   },

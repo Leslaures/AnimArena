@@ -5,6 +5,27 @@
   height: 100vh;
 }
 
+.encyclopedia-button {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #d2b48c;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 5px 10px black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.encyclopedia-button:hover {
+  background-color: #daa520;
+  transform: scale(1.1);
+}
+
 @media screen and (max-width: 1024px) {
   #gamePage {
     display: flex;
