@@ -25,8 +25,9 @@ function Animals_card({
   isP1,
 }: Animals_cardProps) {
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSelectedChar(value);
+    const value = JSON.parse(event.target.value);
+    const formattedValue = `${value.label} : ${value.value} ${value.unité}`;
+    setSelectedChar(formattedValue);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +53,11 @@ function Animals_card({
               type="radio"
               id="poids"
               name="characteristic"
-              value={`Poids : ${animal.poids_kg} kg`}
+              value={JSON.stringify({
+                label: "Poids",
+                value: animal.poids_kg,
+                unité: "kg",
+              })}
               onChange={handleCharacteristic}
             />
             <label htmlFor="poids">Poids : {animal.poids_kg} kg</label>
@@ -63,7 +68,11 @@ function Animals_card({
               type="radio"
               id="longueur"
               name="characteristic"
-              value={`Longueur : ${animal.longueur_cm} cm`}
+              value={JSON.stringify({
+                label: "Longueur",
+                value: animal.longueur_cm,
+                unité: "cm",
+              })}
               onChange={handleCharacteristic}
             />
             <label htmlFor="longueur">Longueur : {animal.longueur_cm} cm</label>
@@ -74,7 +83,11 @@ function Animals_card({
               type="radio"
               id="longevite"
               name="characteristic"
-              value={`Longévité : ${animal.longevite_ans} ans`}
+              value={JSON.stringify({
+                label: "Longévité",
+                value: animal.longevite_ans,
+                unité: "ans",
+              })}
               onChange={handleCharacteristic}
             />
             <label htmlFor="longevite">
@@ -87,7 +100,11 @@ function Animals_card({
               type="radio"
               id="gestation"
               name="characteristic"
-              value={`Gestation : ${animal.gestation_jours} jours`}
+              value={JSON.stringify({
+                label: "Gestation",
+                value: animal.gestation_jours,
+                unité: "jours",
+              })}
               onChange={handleCharacteristic}
             />
             <label htmlFor="gestation">

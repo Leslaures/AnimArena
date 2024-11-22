@@ -54,7 +54,10 @@ function Game_zone({
         <div className="zoneDePiochePlayer">
           <Deck
             handleSetAnimalP1={handleSetAnimalP1}
-            setShowVersoCard={setShowVersoCard}
+            setShowVersoCard={() => {
+              setCharacteristicValidated(false);
+              setShowVersoCard(true);
+            }}
             isP1={true}
           />
         </div>
