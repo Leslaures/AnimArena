@@ -64,7 +64,7 @@ function Game_page() {
         setCharacteristicValidated={setCharacteristicValidated}
         animalComputer={animalComputer}
       />
-        {/* Bouton vers l'Encyclopédie */}
+      {/* Bouton vers l'Encyclopédie */}
       <button
         type="button"
         onClick={handleEncyclopediaClick}
