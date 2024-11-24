@@ -9,7 +9,7 @@ main {
   height: 100%;
 }
 p {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 #imgPlayerContainer,
 #imgComputerContainer {
@@ -29,6 +29,7 @@ p {
   background-size: 415px 600px;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform 0.3s ease;
 }
 
 .zoneDeJeuComputer,

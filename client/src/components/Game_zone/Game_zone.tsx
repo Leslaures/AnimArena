@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
 import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 import type { AnimalType } from "../../pages/Game_page";
+import Help from "../Help/Help";
 
 interface GamezoneProps {
   pseudo: string;
@@ -23,6 +24,27 @@ function Game_zone({
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
+  const [help, setHelp] = useState(
+    "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
+  );
+
+  useEffect(() => {
+    if (animal) {
+      setHelp("Clique sur ta carte pour la révéler");
+    }
+  }, [animal]);
+
+  useEffect(() => {
+    if (showRectoCard) {
+      setHelp("Choisis une caractéristique à comparer");
+    }
+  }, [showRectoCard]);
+
+  useEffect(() => {
+    if (selectedChar) {
+      setHelp("Si tu es prêt / prête à lancer le duel, clique sur GO !");
+    }
+  }, [selectedChar]);
 
   const handleSetAnimalP1 = (animal: AnimalType) => {
     setAnimalP1(animal);
@@ -108,6 +130,7 @@ function Game_zone({
           />
         </div>
       </section>
+      <Help help={help} />
     </main>
   );
 }

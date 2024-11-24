@@ -1,9 +1,9 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
-import Header from "../components/Header/Header";
 import "./Game_page.css";
 import { useEffect, useState } from "react";
+import Selected_characteristic from "../components/Selected_characteristic/Selected_characteristic";
 
 export type AnimalType = {
   nom: string;
@@ -53,7 +53,7 @@ function Game_page() {
   return (
     <div id="gamePage">
       <div className="hide-mobile-screen">
-        <Header selectedChar={selectedChar} />
+        <Selected_characteristic selectedChar={selectedChar} />
         <GameRulesModal />
       </div>
 
