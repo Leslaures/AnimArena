@@ -52,6 +52,12 @@ p {
   background-position: center;
   background-repeat: no-repeat;
 }
+.zoneDePiochePlayer,
+.zoneDePiocheComputer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* ///////Responsive//////// */
 
