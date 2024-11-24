@@ -32,14 +32,8 @@ function EncyclopediaPage() {
     } else {
       const suggestions = animals.filter((animal) => {
         const nom = animal?.nom?.toLowerCase() || "";
-        const nom_male = animal?.nom_male?.toLowerCase() || "";
-        const nom_femelle = animal?.nom_femelle?.toLowerCase() || "";
 
-        return (
-          nom.includes(searchTerm.toLowerCase()) ||
-          nom_male.includes(searchTerm.toLowerCase()) ||
-          nom_femelle.includes(searchTerm.toLowerCase())
-        );
+        return nom.includes(searchTerm.toLowerCase());
       });
       setFilteredAnimals(suggestions);
     }
@@ -81,7 +75,7 @@ function EncyclopediaPage() {
           <ul className="suggestions-list">
             {filteredAnimals.map((animal) => (
               <li
-                key={`${animal.nom}-${animal.nom_male}`}
+                key={`${animal.nom}`}
                 onClick={() => handleSuggestionClick(animals.indexOf(animal))}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
@@ -90,7 +84,7 @@ function EncyclopediaPage() {
                 }}
                 className="suggestion-item" // rendre l'élément focusable
               >
-                {animal.nom_male || animal.nom}
+                {animal.nom}
               </li>
             ))}
           </ul>
