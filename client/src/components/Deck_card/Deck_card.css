@@ -9,7 +9,28 @@
   border: none;
   padding: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
 }
+.buttonDeckCard:hover {
+  transform: scale(1.1);
+}
+
+@keyframes distributeCard {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-50px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0) scale(1.5);
+  }
+}
+
+.distributing {
+  animation: distributeCard 0.5s forwards;
+}
+
 .deckCard {
   width: auto;
   display: flex;
