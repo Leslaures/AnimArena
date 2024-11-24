@@ -20,7 +20,6 @@ function Deck_card({
       fetch("http://localhost:3310/api/animalsLibrary")
         .then((response) => response.json())
         .then((data) => {
-          console.info(data);
           const randomIndex = Math.floor(Math.random() * data.results.length);
           handleSetAnimalP1(data.results[randomIndex]);
           setIsButtonClicked(false);

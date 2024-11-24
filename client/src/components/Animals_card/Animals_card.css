@@ -7,9 +7,59 @@
   object-fit: contain;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
-
+.formDisabled {
+  display: none;
+  pointer-events: none;
+}
+.formDisabledLabel {
+  pointer-events: none;
+}
 .CPU {
   display: none;
+  pointer-events: none;
+}
+.CPUlabel {
+  pointer-events: none;
+}
+
+#charValidatorButton {
+  position: fixed;
+  bottom: 40%;
+  right: 64%;
+  padding: 0;
+  background-color: #daa520;
+  border: none;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  box-shadow: 1px 5px 10px black;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s;
+  transition: transform 0.2s ease, background-color 0.3s;
+  animation: bounce 2s infinite;
+}
+#charValidatorButton:hover {
+  font-weight: 900;
+  box-shadow: 1px 5px 5px black;
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 .animalPicture {

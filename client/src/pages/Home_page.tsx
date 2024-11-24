@@ -1,6 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
-import Header from "../components/Header/Header";
+import HeaderHP from "../components/Header HP/HeaderHP";
 import Pseudo from "../components/Pseudo/Pseudo";
 
 function Home_page() {
@@ -11,7 +11,7 @@ function Home_page() {
 
   return (
     <>
-      <Header selectedChar="" />
+      <HeaderHP />
       <div>
         <Pseudo pseudo={pseudo} setPseudo={setPseudo} />
 

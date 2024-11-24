@@ -70,7 +70,7 @@ function Game_page() {
         onClick={handleEncyclopediaClick}
         className="encyclopedia-button"
       >
-        Voir l'Encyclopédie
+        Encyclopédie
       </button>
     </div>
   );
