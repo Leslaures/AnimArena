@@ -24,6 +24,8 @@ function Game_zone({
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
+  const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
+
   const [help, setHelp] = useState(
     "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
   );
@@ -33,6 +35,16 @@ function Game_zone({
       setHelp("Clique sur ta carte pour la révéler");
     }
   }, [animal]);
+
+  // Choisit quelle index de carte CPU à défausser
+  useEffect(() => {
+    if (showVersoCardCPU) {
+      const randomCpuIdDeckCard = (
+        Math.floor(Math.random() * 5) + 1
+      ).toString();
+      setCpuIdDeckCard(randomCpuIdDeckCard);
+    }
+  }, [showVersoCardCPU]);
 
   useEffect(() => {
     if (showRectoCard) {
@@ -66,6 +78,8 @@ function Game_zone({
         <div className="zoneDePiochePlayer">
           <Deck
             handleSetAnimalP1={handleSetAnimalP1}
+            cpuIdDeckCard={cpuIdDeckCard}
+            showVersoCard={showVersoCard}
             setShowVersoCard={() => {
               setCharacteristicValidated(false);
               setShowVersoCard(true);
@@ -127,6 +141,8 @@ function Game_zone({
             handleSetAnimalP1={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
             isP1={false}
+            cpuIdDeckCard={cpuIdDeckCard}
+            showVersoCard={showVersoCard}
           />
         </div>
       </section>

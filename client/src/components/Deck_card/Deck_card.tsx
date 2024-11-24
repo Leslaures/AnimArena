@@ -1,19 +1,25 @@
 import "./Deck_card.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AnimalType } from "../../pages/Game_page";
 
 interface Deck_cardProps {
   handleSetAnimalP1: (animal: AnimalType) => void;
+  showVersoCard: boolean;
   setShowVersoCard: (show: boolean) => void;
   isP1: boolean;
+  cpuIdDeckCard: string;
+  indexInDeck: string;
 }
 
 function Deck_card({
   isP1,
   handleSetAnimalP1,
+  cpuIdDeckCard,
+  indexInDeck,
+  showVersoCard,
   setShowVersoCard,
 }: Deck_cardProps) {
-  const [isButtonClicked, setIsButtonClicked] = useState(true);
+  const [isButtonClickable, setIsButtonClickable] = useState(true);
   const [isDistributing, setIsDistributing] = useState(false);
 
   const getAnimal = () => {
@@ -25,26 +31,34 @@ function Deck_card({
           .then((data) => {
             const randomIndex = Math.floor(Math.random() * data.results.length);
             handleSetAnimalP1(data.results[randomIndex]);
-            setIsButtonClicked(false);
+            setIsButtonClickable(false);
             setShowVersoCard(true);
             setIsDistributing(false);
           })
           .catch((error) => {
             console.error(error);
-            setIsDistributing(false); // Assurez-vous de réinitialiser l'état en cas d'erreur
+            setIsDistributing(false);
           });
       }
-    }, 500); // Durée de l'animation
+    }, 500);
   };
+
+  useEffect(() => {
+    if (!isP1 && showVersoCard === true && indexInDeck === cpuIdDeckCard) {
+      setIsButtonClickable(false);
+    }
+  }, [showVersoCard, isP1, indexInDeck, cpuIdDeckCard]);
 
   return (
     <div className="deckCard">
-      {isButtonClicked && (
+      {isButtonClickable && (
         <button
           type="button"
           onClick={getAnimal}
-          className={`buttonDeckCard ${isDistributing ? "distributing" : ""}`}
-        />
+          className={`buttonDeckCard ${isDistributing && isP1 ? "distributing" : ""}`}
+        >
+          <p>{indexInDeck}</p>
+        </button>
       )}
     </div>
   );
