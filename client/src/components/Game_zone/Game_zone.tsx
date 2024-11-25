@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Animals_card from "../Animals_card/Animals_card";
 import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 import type { AnimalType } from "../../pages/Game_page";
+import Help from "../Help/Help";
 
 interface GamezoneProps {
   pseudo: string;
@@ -23,17 +24,49 @@ function Game_zone({
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
+  const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
+  const [help, setHelp] = useState(
+    "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
+  );
 
+  // Choisit quel index de carte CPU à défausser
+  useEffect(() => {
+    if (showVersoCardCPU) {
+      const randomCpuIdDeckCard = (
+        Math.floor(Math.random() * 5) + 1
+      ).toString();
+      setCpuIdDeckCard(randomCpuIdDeckCard);
+    }
+  }, [showVersoCardCPU]);
+
+  //Choisit quelle aide afficher
+  useEffect(() => {
+    if (animal) {
+      setHelp("Clique sur ta carte pour la révéler");
+    }
+  }, [animal]);
+  useEffect(() => {
+    if (showRectoCard) {
+      setHelp("Choisis une caractéristique à comparer");
+    }
+  }, [showRectoCard]);
+  useEffect(() => {
+    if (selectedChar) {
+      setHelp("Si tu es prêt / prête à lancer le duel, clique sur GO !");
+    }
+  }, [selectedChar]);
+
+  // Permet de synchroniser l'affichage de la carte du CPU avec celle du P1
   const handleSetAnimalP1 = (animal: AnimalType) => {
     setAnimalP1(animal);
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
-      //défausse deckcard CPU ?
     }, 1000);
     return () => clearTimeout(timer);
   };
 
+  // Permet de retourner la carte du P1
   const handleVersoClick = () => {
     setShowRectoCard(true);
   };
@@ -44,6 +77,8 @@ function Game_zone({
         <div className="zoneDePiochePlayer">
           <Deck
             handleSetAnimalP1={handleSetAnimalP1}
+            cpuIdDeckCard={cpuIdDeckCard}
+            showVersoCard={showVersoCard}
             setShowVersoCard={() => {
               setCharacteristicValidated(false);
               setShowVersoCard(true);
@@ -105,9 +140,12 @@ function Game_zone({
             handleSetAnimalP1={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
             isP1={false}
+            cpuIdDeckCard={cpuIdDeckCard}
+            showVersoCard={showVersoCard}
           />
         </div>
       </section>
+      <Help help={help} />
     </main>
   );
 }

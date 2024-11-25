@@ -1,9 +1,9 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
-import Header from "../components/Header/Header";
 import "./Game_page.css";
 import { useEffect, useState } from "react";
+import Selected_characteristic from "../components/Selected_characteristic/Selected_characteristic";
 
 export type AnimalType = {
   nom: string;
@@ -22,15 +22,16 @@ function Game_page() {
   const { pseudo } = useOutletContext<{ pseudo: string }>();
   const navigate = useNavigate(); // Pour naviguer entre les pages
   const [selectedChar, setSelectedChar] = useState<string>("");
-
-  const handleEncyclopediaClick = () => {
-    navigate("/encyclopedia");
-  };
-
   const [characteristicValidated, setCharacteristicValidated] =
     useState<boolean>(false);
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
 
+  //Permet de naviguer vers l'Encyclopédie
+  const handleEncyclopediaClick = () => {
+    navigate("/encyclopedia");
+  };
+
+  // Permet de récupérer une carte aléatoire dans l'API pour CPU
   useEffect(() => {
     if (characteristicValidated) {
       const timer = setTimeout(() => {
@@ -53,7 +54,7 @@ function Game_page() {
   return (
     <div id="gamePage">
       <div className="hide-mobile-screen">
-        <Header selectedChar={selectedChar} />
+        <Selected_characteristic selectedChar={selectedChar} />
         <GameRulesModal />
       </div>
 
@@ -70,7 +71,7 @@ function Game_page() {
         onClick={handleEncyclopediaClick}
         className="encyclopedia-button"
       >
-        Voir l'Encyclopédie
+        Encyclopédie
       </button>
     </div>
   );

@@ -94,7 +94,10 @@ nav {
   padding: 0.8rem 1.5rem;
   font-size: 1.5rem;
 }
-
+.game-rules-button-game:hover {
+  background-color: #daa520;
+  transform: scale(1.1);
+}
 @media screen and (max-width: 1024px) {
   .game-rules-button-home,
   .game-rules-button-game {
