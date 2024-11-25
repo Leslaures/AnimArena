@@ -58,9 +58,7 @@ function Deck_card({
           type="button"
           onClick={getAnimal}
           className={`buttonDeckCard ${isDistributing && isP1 ? "distributing" : ""} ${isP1 ? "buttonDeckCardClickable" : ""}`}
-        >
-          <p>{indexInDeck}</p>
-        </button>
+        />
       )}
     </div>
   );
