@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 2%;
-  right: 15%;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #pHelp {
   background-color: rgba(255, 251, 251, 0.8);

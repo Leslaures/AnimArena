@@ -21,9 +21,10 @@
 }
 
 .modal-closeBtn {
-  position: absolute;
-  top: 630px;
-  right: 920px;
+  position: fixed;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #d2b48c;
   height: 90px;
   width: 90px;
@@ -37,5 +38,4 @@
 }
 .modal-closeBtn:hover {
   background-color: #daa520;
-  transform: scale(1.1);
 }

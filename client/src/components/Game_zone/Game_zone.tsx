@@ -39,7 +39,6 @@ function Game_zone({
     "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
   );
   const [charCPU, setCharCPU] = useState("");
-
   const [show, setShow] = useState(false);
 
   // Permet de setter la caractéristique du CPU

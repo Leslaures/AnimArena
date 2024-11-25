@@ -59,6 +59,14 @@ function Game_page() {
         <Selected_characteristic selectedChar={selectedChar} />
         <GameRulesModal />
       </div>
+      {/* Bouton vers l'Encyclopédie */}
+      <button
+        type="button"
+        onClick={handleEncyclopediaClick}
+        className="encyclopedia-button"
+      >
+        Encyclopédie
+      </button>
 
       <Game_zone
         pseudo={pseudo}
@@ -71,14 +79,6 @@ function Game_page() {
         setWinnerMessage={setWinnerMessage}
         setWinnerEmoji={setWinnerEmoji}
       />
-      {/* Bouton vers l'Encyclopédie */}
-      <button
-        type="button"
-        onClick={handleEncyclopediaClick}
-        className="encyclopedia-button"
-      >
-        Encyclopédie
-      </button>
     </div>
   );
 }

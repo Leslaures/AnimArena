@@ -53,7 +53,7 @@ function Animals_card({
               id="vitesse"
               name="characteristic"
               value={JSON.stringify({
-                label: "vitesse",
+                label: "Vitesse",
                 value: animal.vitesse_kmh,
                 unité: "km/h",
               })}
@@ -74,7 +74,7 @@ function Animals_card({
               id="poids"
               name="characteristic"
               value={JSON.stringify({
-                label: "poids",
+                label: "Poids",
                 value: animal.poids_kg,
                 unité: "kg",
               })}
@@ -94,7 +94,7 @@ function Animals_card({
               id="longueur"
               name="characteristic"
               value={JSON.stringify({
-                label: "longueur",
+                label: "Longueur",
                 value: animal.longueur_cm,
                 unité: "cm",
               })}
@@ -114,7 +114,7 @@ function Animals_card({
               id="longevite"
               name="characteristic"
               value={JSON.stringify({
-                label: "longévité",
+                label: "Longévité",
                 value: animal.longevite_ans,
                 unité: "ans",
               })}
@@ -134,7 +134,7 @@ function Animals_card({
               id="gestation"
               name="characteristic"
               value={JSON.stringify({
-                label: "gestation",
+                label: "Gestation",
                 value: animal.gestation_jours,
                 unité: "jours",
               })}
