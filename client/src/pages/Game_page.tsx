@@ -22,15 +22,16 @@ function Game_page() {
   const { pseudo } = useOutletContext<{ pseudo: string }>();
   const navigate = useNavigate(); // Pour naviguer entre les pages
   const [selectedChar, setSelectedChar] = useState<string>("");
-
-  const handleEncyclopediaClick = () => {
-    navigate("/encyclopedia");
-  };
-
   const [characteristicValidated, setCharacteristicValidated] =
     useState<boolean>(false);
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
 
+  //Permet de naviguer vers l'Encyclopédie
+  const handleEncyclopediaClick = () => {
+    navigate("/encyclopedia");
+  };
+
+  // Permet de récupérer une carte aléatoire dans l'API pour CPU
   useEffect(() => {
     if (characteristicValidated) {
       const timer = setTimeout(() => {

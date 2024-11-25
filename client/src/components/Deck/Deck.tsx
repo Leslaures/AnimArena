@@ -10,6 +10,8 @@ interface Deck_cardProps {
   showVersoCard: boolean;
 }
 
+//Sert à afficher les cartes du deck
+
 function Deck({
   cpuIdDeckCard,
   isP1,

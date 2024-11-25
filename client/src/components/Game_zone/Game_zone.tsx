@@ -25,18 +25,11 @@ function Game_zone({
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
   const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
-
   const [help, setHelp] = useState(
     "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
   );
 
-  useEffect(() => {
-    if (animal) {
-      setHelp("Clique sur ta carte pour la révéler");
-    }
-  }, [animal]);
-
-  // Choisit quelle index de carte CPU à défausser
+  // Choisit quel index de carte CPU à défausser
   useEffect(() => {
     if (showVersoCardCPU) {
       const randomCpuIdDeckCard = (
@@ -46,28 +39,34 @@ function Game_zone({
     }
   }, [showVersoCardCPU]);
 
+  //Choisit quelle aide afficher
+  useEffect(() => {
+    if (animal) {
+      setHelp("Clique sur ta carte pour la révéler");
+    }
+  }, [animal]);
   useEffect(() => {
     if (showRectoCard) {
       setHelp("Choisis une caractéristique à comparer");
     }
   }, [showRectoCard]);
-
   useEffect(() => {
     if (selectedChar) {
       setHelp("Si tu es prêt / prête à lancer le duel, clique sur GO !");
     }
   }, [selectedChar]);
 
+  // Permet de synchroniser l'affichage de la carte du CPU avec celle du P1
   const handleSetAnimalP1 = (animal: AnimalType) => {
     setAnimalP1(animal);
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
-      //défausse deckcard CPU ?
     }, 1000);
     return () => clearTimeout(timer);
   };
 
+  // Permet de retourner la carte du P1
   const handleVersoClick = () => {
     setShowRectoCard(true);
   };

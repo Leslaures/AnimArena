@@ -19,6 +19,7 @@ function Animals_card({
   onValidateCharacteristic,
   isP1,
 }: Animals_cardProps) {
+  // Permet de récupérer la caractéristique choisie
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = JSON.parse(event.target.value);
     const formattedValue = `${value.label} : ${value.value} ${value.unité}`;
@@ -26,6 +27,7 @@ function Animals_card({
     isSelectedChar = true;
   };
 
+  // Permet de valider la caractéristique choisie
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onValidateCharacteristic();
@@ -147,6 +149,7 @@ function Animals_card({
             </label>
           </div>
           <div className={isP1 ? "" : "CPU"}>
+            {/* Permet d'afficher le bouton GO ! si une caractéristique est choisie*/}
             {isSelectedChar && (
               <button id="charValidatorButton" type="submit">
                 GO !

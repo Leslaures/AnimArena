@@ -22,6 +22,7 @@ function Deck_card({
   const [isButtonClickable, setIsButtonClickable] = useState(true);
   const [isDistributing, setIsDistributing] = useState(false);
 
+  // Permet de récupérer une carte aléatoire dans l'API pour P1
   const getAnimal = () => {
     setIsDistributing(true);
     setTimeout(() => {
@@ -43,6 +44,7 @@ function Deck_card({
     }, 500);
   };
 
+  //Permet de défausser la petite carte du CPU
   useEffect(() => {
     if (!isP1 && showVersoCard === true && indexInDeck === cpuIdDeckCard) {
       setIsButtonClickable(false);
@@ -55,7 +57,7 @@ function Deck_card({
         <button
           type="button"
           onClick={getAnimal}
-          className={`buttonDeckCard ${isDistributing && isP1 ? "distributing" : ""}`}
+          className={`buttonDeckCard ${isDistributing && isP1 ? "distributing" : ""} ${isP1 ? "buttonDeckCardClickable" : ""}`}
         >
           <p>{indexInDeck}</p>
         </button>
