@@ -4,6 +4,8 @@ import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 import type { AnimalType } from "../../pages/Game_page";
 import Help from "../Help/Help";
+import Winner from "../Winner/Winner";
+import Winner_modal from "../Winner_modal/Winner_modal";
 
 interface GamezoneProps {
   pseudo: string;
@@ -11,6 +13,8 @@ interface GamezoneProps {
   setSelectedChar: (selectedChar: string) => void;
   setCharacteristicValidated: (validated: boolean) => void;
   animalComputer: AnimalType | null;
+  winner: string | null;
+  setWinner: (winner: string) => void;
 }
 
 function Game_zone({
@@ -19,6 +23,8 @@ function Game_zone({
   setSelectedChar,
   setCharacteristicValidated,
   animalComputer,
+  winner,
+  setWinner,
 }: GamezoneProps) {
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
@@ -28,6 +34,71 @@ function Game_zone({
   const [help, setHelp] = useState(
     "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
   );
+  const [charCPU, setCharCPU] = useState("");
+
+  const [show, setShow] = useState(false);
+
+  // Permet de setter la caractéristique du CPU
+  useEffect(() => {
+    if (selectedChar && animalComputer) {
+      const [label, valueWithUnit] = selectedChar
+        .split(":")
+        .map((str) => str.trim());
+      const valueParts = valueWithUnit.split(" ");
+      const unit = valueParts.slice(1).join(" "); // L'unité
+
+      // Mapper les labels aux propriétés de l'objet animalComputer
+      let cpuValue: number | undefined;
+      switch (label.toLowerCase()) {
+        case "poids":
+          cpuValue = animalComputer.poids_kg;
+          break;
+        case "longueur":
+          cpuValue = animalComputer.longueur_cm;
+          break;
+        case "longévité":
+          cpuValue = animalComputer.longevite_ans;
+          break;
+        case "gestation":
+          cpuValue = animalComputer.gestation_jours;
+          break;
+        case "vitesse":
+          cpuValue = animalComputer.vitesse_kmh;
+          break;
+        default:
+          cpuValue = undefined;
+      }
+
+      const formattedCpuChar = `${label} : ${cpuValue} ${unit}`;
+      setCharCPU(formattedCpuChar);
+      console.info("CPU Characteristic:", formattedCpuChar);
+      console.info("Player Characteristic:", selectedChar);
+    }
+  }, [selectedChar, animalComputer]);
+
+  // Permet de définir le gagnant
+  useEffect(() => {
+    if (selectedChar && charCPU) {
+      const playerValue = Number.parseInt(
+        selectedChar.split(":")[1].trim().split(" ")[0],
+      );
+      const cpuValue = Number.parseInt(
+        charCPU.split(":")[1].trim().split(" ")[0],
+      );
+
+      let winner: string;
+      if (playerValue > cpuValue) {
+        winner = `${pseudo}`;
+      } else if (playerValue < cpuValue) {
+        winner = "Ordinateur";
+      } else {
+        winner = "Egalité";
+      }
+      setWinner(winner);
+      console.info("Winner:", winner);
+      setShow(true);
+    }
+  }, [selectedChar, charCPU, pseudo, setWinner]);
 
   // Choisit quel index de carte CPU à défausser
   useEffect(() => {
@@ -146,6 +217,9 @@ function Game_zone({
         </div>
       </section>
       <Help help={help} />
+      <Winner_modal show={show} onClose={() => setShow(false)}>
+        <Winner winner={winner} />
+      </Winner_modal>
     </main>
   );
 }

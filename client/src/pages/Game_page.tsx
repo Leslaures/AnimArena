@@ -25,6 +25,7 @@ function Game_page() {
   const [characteristicValidated, setCharacteristicValidated] =
     useState<boolean>(false);
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
+  const [winner, setWinner] = useState<string | null>(null);
 
   //Permet de naviguer vers l'Encyclopédie
   const handleEncyclopediaClick = () => {
@@ -64,6 +65,8 @@ function Game_page() {
         setSelectedChar={setSelectedChar}
         setCharacteristicValidated={setCharacteristicValidated}
         animalComputer={animalComputer}
+        winner={winner}
+        setWinner={setWinner}
       />
       {/* Bouton vers l'Encyclopédie */}
       <button

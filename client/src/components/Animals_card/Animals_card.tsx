@@ -14,7 +14,6 @@ let isValidatedChar = false;
 
 function Animals_card({
   animal,
-  // selectedChar,
   setSelectedChar,
   onValidateCharacteristic,
   isP1,
@@ -54,7 +53,7 @@ function Animals_card({
               id="vitesse"
               name="characteristic"
               value={JSON.stringify({
-                label: "Vitesse",
+                label: "vitesse",
                 value: animal.vitesse_kmh,
                 unité: "km/h",
               })}
@@ -75,7 +74,7 @@ function Animals_card({
               id="poids"
               name="characteristic"
               value={JSON.stringify({
-                label: "Poids",
+                label: "poids",
                 value: animal.poids_kg,
                 unité: "kg",
               })}
@@ -95,7 +94,7 @@ function Animals_card({
               id="longueur"
               name="characteristic"
               value={JSON.stringify({
-                label: "Longueur",
+                label: "longueur",
                 value: animal.longueur_cm,
                 unité: "cm",
               })}
@@ -115,7 +114,7 @@ function Animals_card({
               id="longevite"
               name="characteristic"
               value={JSON.stringify({
-                label: "Longévité",
+                label: "longévité",
                 value: animal.longevite_ans,
                 unité: "ans",
               })}
@@ -135,7 +134,7 @@ function Animals_card({
               id="gestation"
               name="characteristic"
               value={JSON.stringify({
-                label: "Gestation",
+                label: "gestation",
                 value: animal.gestation_jours,
                 unité: "jours",
               })}
