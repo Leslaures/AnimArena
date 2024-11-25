@@ -1,9 +1,16 @@
 import "./Winner.css";
 
-function Winner({ winner }: { winner: string | null }) {
+function Winner({
+  winnerMessage,
+  winnerEmoji,
+}: { winnerMessage: string | null; winnerEmoji: string | null }) {
   return (
     <div className="Score">
-      <h2>{winner}</h2>
+      <h2 id="winnerH2">
+        {winnerMessage}
+        <br />
+        {winnerEmoji}
+      </h2>
     </div>
   );
 }

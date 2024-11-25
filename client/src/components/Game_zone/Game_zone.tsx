@@ -13,8 +13,10 @@ interface GamezoneProps {
   setSelectedChar: (selectedChar: string) => void;
   setCharacteristicValidated: (validated: boolean) => void;
   animalComputer: AnimalType | null;
-  winner: string | null;
-  setWinner: (winner: string) => void;
+  winnerEmoji: string | null;
+  winnerMessage: string | null;
+  setWinnerMessage: (winnerMessage: string) => void;
+  setWinnerEmoji: (winnerEmoji: string) => void;
 }
 
 function Game_zone({
@@ -23,8 +25,10 @@ function Game_zone({
   setSelectedChar,
   setCharacteristicValidated,
   animalComputer,
-  winner,
-  setWinner,
+  winnerEmoji,
+  winnerMessage,
+  setWinnerMessage,
+  setWinnerEmoji,
 }: GamezoneProps) {
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
@@ -86,19 +90,23 @@ function Game_zone({
         charCPU.split(":")[1].trim().split(" ")[0],
       );
 
-      let winner: string;
+      let winnerMessage: string;
+      let winnerEmoji: string;
       if (playerValue > cpuValue) {
-        winner = `${pseudo}`;
+        winnerMessage = "Bravo, tu as remporté la manche !";
+        winnerEmoji = "🎉";
       } else if (playerValue < cpuValue) {
-        winner = "Ordinateur";
+        winnerMessage = "L'ordinateur a remporté la manche !";
+        winnerEmoji = "🤖";
       } else {
-        winner = "Egalité";
+        winnerMessage = "Vous êtes à égalité !";
+        winnerEmoji = "🤝";
       }
-      setWinner(winner);
-      console.info("Winner:", winner);
+      setWinnerEmoji(winnerEmoji);
+      setWinnerMessage(winnerMessage);
       setShow(true);
     }
-  }, [selectedChar, charCPU, pseudo, setWinner]);
+  }, [selectedChar, charCPU, setWinnerMessage, setWinnerEmoji]);
 
   // Choisit quel index de carte CPU à défausser
   useEffect(() => {
@@ -110,7 +118,7 @@ function Game_zone({
     }
   }, [showVersoCardCPU]);
 
-  //Choisit quelle aide afficher
+  // Choisit quelle aide afficher
   useEffect(() => {
     if (animal) {
       setHelp("Clique sur ta carte pour la révéler");
@@ -218,7 +226,7 @@ function Game_zone({
       </section>
       <Help help={help} />
       <Winner_modal show={show} onClose={() => setShow(false)}>
-        <Winner winner={winner} />
+        <Winner winnerMessage={winnerMessage} winnerEmoji={winnerEmoji} />
       </Winner_modal>
     </main>
   );

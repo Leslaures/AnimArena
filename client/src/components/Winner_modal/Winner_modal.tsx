@@ -18,7 +18,7 @@ const Winner_modal: React.FC<Winner_modalProps> = ({
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <button type="button" className="modal-close" onClick={onClose}>
+        <button type="button" className="modal-closeBtn" onClick={onClose}>
           &times;
         </button>
         {children}
