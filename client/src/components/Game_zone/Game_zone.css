@@ -9,7 +9,7 @@ main {
   height: 100%;
 }
 p {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .grayed-out {
   opacity: 0.5;

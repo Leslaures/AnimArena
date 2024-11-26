@@ -8,7 +8,9 @@ interface selectedChar {
 function Selected_characteristic({ selectedChar }: selectedChar) {
   return (
     <div id="selected_char">
-      <h1>{`${selectedChar.label} : ${selectedChar.value} ${selectedChar.unit}`}</h1>
+      {selectedChar.value !== 0 && (
+        <h1>{`${selectedChar.label} : ${selectedChar.value} ${selectedChar.unit}`}</h1>
+      )}
     </div>
   );
 }

@@ -37,7 +37,7 @@ function Game_zone({
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
   const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
   const [help, setHelp] = useState(
-    "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
+    "Clique sur une carte dans ta zone de pioche",
   );
   const [charCPU, setCharCPU] = useState(0);
   const [show, setShow] = useState(false);
@@ -110,17 +110,30 @@ function Game_zone({
 
   // Choisit quelle aide afficher
   useEffect(() => {
-    if (animal) {
-      setHelp("Clique sur ta carte pour la révéler");
+    if (showVersoCardCPU) {
+      setHelp(
+        "C'est au tour de l'ordinateur de jouer",
+      ); /*TODO: trouver les interractions à surveiller pour afficher "l'ordinateur joue*/
     }
-  }, [animal]);
+  }, [showVersoCardCPU]);
+
+  useEffect(() => {
+    if (showVersoCardCPU) {
+      const timer = setTimeout(() => {
+        setHelp("Clique sur ta carte pour la révéler");
+      }, 1300);
+      return () => clearTimeout(timer);
+    }
+  }, [showVersoCardCPU]);
+
   useEffect(() => {
     if (showRectoCard) {
       setHelp("Choisis une caractéristique à comparer");
     }
   }, [showRectoCard]);
+
   useEffect(() => {
-    if (selectedChar) {
+    if (selectedChar.value !== 0) {
       setHelp("Si tu es prêt / prête à lancer le duel, clique sur GO !");
     }
   }, [selectedChar]);
@@ -131,13 +144,13 @@ function Game_zone({
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
-    }, 2400);
+    }, 1400);
     const timer2 = setTimeout(() => {
-      setIsP1Turn(true); // tour du CPU  /*TODO:*/
-    }, 5000);
+      setIsP1Turn(true); // tour du P1  /*TODO:*/
+    }, 4000);
     return function clearTimeoutFct() {
-      clearTimeout(timer);
       clearTimeout(timer2);
+      clearTimeout(timer);
     };
   };
 

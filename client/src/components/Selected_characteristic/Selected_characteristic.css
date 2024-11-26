@@ -4,7 +4,7 @@
   align-items: center;
   height: 5vh;
   position: fixed;
-  top: 3%;
+  bottom: 3%;
   left: 50%;
   transform: translateX(-50%);
   h1 {
