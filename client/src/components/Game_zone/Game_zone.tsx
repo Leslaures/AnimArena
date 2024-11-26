@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import Animals_card from "../Animals_card/Animals_card";
-import Deck from "../Deck/Deck";
 import "./Game_zone.css";
 import type { AnimalType } from "../../pages/Game_page";
+import type { SelectedCharType } from "../../pages/Game_page";
+import Animals_card from "../Animals_card/Animals_card";
+import Deck from "../Deck/Deck";
 import Help from "../Help/Help";
 import Winner from "../Winner/Winner";
 import Winner_modal from "../Winner_modal/Winner_modal";
 
 interface GamezoneProps {
   pseudo: string;
-  selectedChar: string;
-  setSelectedChar: (selectedChar: string) => void;
+  selectedChar: SelectedCharType;
+  setSelectedChar: (selectedChar: SelectedCharType) => void;
   setCharacteristicValidated: (validated: boolean) => void;
   animalComputer: AnimalType | null;
   winnerEmoji: string | null;
@@ -38,21 +39,16 @@ function Game_zone({
   const [help, setHelp] = useState(
     "Choisis une carte : clique sur une petite carte pour l'afficher dans ta zone de jeu",
   );
-  const [charCPU, setCharCPU] = useState("");
+  const [charCPU, setCharCPU] = useState(0);
   const [show, setShow] = useState(false);
+  const [isP1Turn, setIsP1Turn] = useState<boolean | null>(true);
 
   // Permet de setter la caractéristique du CPU
   useEffect(() => {
     if (selectedChar && animalComputer) {
-      const [label, valueWithUnit] = selectedChar
-        .split(":")
-        .map((str) => str.trim());
-      const valueParts = valueWithUnit.split(" ");
-      const unit = valueParts.slice(1).join(" "); // L'unité
-
       // Mapper les labels aux propriétés de l'objet animalComputer
-      let cpuValue: number | undefined;
-      switch (label.toLowerCase()) {
+      let cpuValue: number;
+      switch (selectedChar.label.toLowerCase()) {
         case "poids":
           cpuValue = animalComputer.poids_kg;
           break;
@@ -69,12 +65,10 @@ function Game_zone({
           cpuValue = animalComputer.vitesse_kmh;
           break;
         default:
-          cpuValue = undefined;
+          cpuValue = 0;
       }
-
-      const formattedCpuChar = `${label} : ${cpuValue} ${unit}`;
-      setCharCPU(formattedCpuChar);
-      console.info("CPU Characteristic:", formattedCpuChar);
+      setCharCPU(cpuValue);
+      console.info("CPU Characteristic:", cpuValue);
       console.info("Player Characteristic:", selectedChar);
     }
   }, [selectedChar, animalComputer]);
@@ -82,28 +76,25 @@ function Game_zone({
   // Permet de définir le gagnant
   useEffect(() => {
     if (selectedChar && charCPU) {
-      const playerValue = Number.parseInt(
-        selectedChar.split(":")[1].trim().split(" ")[0],
-      );
-      const cpuValue = Number.parseInt(
-        charCPU.split(":")[1].trim().split(" ")[0],
-      );
-
+      setIsP1Turn(null); // tour du CPU /*TODO:*/
       let winnerMessage: string;
       let winnerEmoji: string;
-      if (playerValue > cpuValue) {
+      if (selectedChar.value > charCPU) {
         winnerMessage = "Bravo, tu as remporté la manche !";
         winnerEmoji = "🎉";
-      } else if (playerValue < cpuValue) {
+      } else if (selectedChar.value < charCPU) {
         winnerMessage = "L'ordinateur a remporté la manche !";
         winnerEmoji = "🤖";
       } else {
         winnerMessage = "Vous êtes à égalité !";
         winnerEmoji = "🤝";
       }
-      setWinnerEmoji(winnerEmoji);
-      setWinnerMessage(winnerMessage);
-      setShow(true);
+      const timer = setTimeout(() => {
+        setWinnerEmoji(winnerEmoji);
+        setWinnerMessage(winnerMessage);
+        setShow(true);
+      }, 5000);
+      return () => clearTimeout(timer);
     }
   }, [selectedChar, charCPU, setWinnerMessage, setWinnerEmoji]);
 
@@ -140,8 +131,14 @@ function Game_zone({
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
-    }, 1000);
-    return () => clearTimeout(timer);
+    }, 2400);
+    const timer2 = setTimeout(() => {
+      setIsP1Turn(true); // tour du CPU  /*TODO:*/
+    }, 5000);
+    return function clearTimeoutFct() {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
   };
 
   // Permet de retourner la carte du P1
@@ -152,7 +149,9 @@ function Game_zone({
   return (
     <main>
       <section id="zoneDeJeu">
-        <div className="zoneDePiochePlayer">
+        <div
+          className={`${"zoneDePiochePlayer"} ${isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
+        >
           <Deck
             handleSetAnimalP1={handleSetAnimalP1}
             cpuIdDeckCard={cpuIdDeckCard}
@@ -162,11 +161,14 @@ function Game_zone({
               setShowVersoCard(true);
             }}
             isP1={true}
+            setIsP1Turn={setIsP1Turn}
           />
         </div>
 
         <section id="player">
-          <div className="zoneDeJeuPlayer">
+          <div
+            className={`${"zoneDeJeuPlayer"} ${isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
+          >
             <div
               id="imgPlayerContainer"
               className={
@@ -181,6 +183,7 @@ function Game_zone({
                   animal={animal}
                   selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
+                  setIsP1Turn={setIsP1Turn}
                   onValidateCharacteristic={() =>
                     setCharacteristicValidated(true)
                   }
@@ -192,7 +195,9 @@ function Game_zone({
         </section>
 
         <section id="computer">
-          <div className="zoneDeJeuComputer">
+          <div
+            className={`${"zoneDeJeuComputer"} ${!isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
+          >
             <div
               id="imgComputerContainer"
               className={showVersoCardCPU ? "backgroundImage" : ""}
@@ -203,6 +208,7 @@ function Game_zone({
                   animal={animalComputer}
                   selectedChar={selectedChar}
                   setSelectedChar={setSelectedChar}
+                  setIsP1Turn={setIsP1Turn}
                   onValidateCharacteristic={() =>
                     setCharacteristicValidated(true)
                   }
@@ -213,13 +219,16 @@ function Game_zone({
           </div>
         </section>
 
-        <div className="zoneDePiocheComputer">
+        <div
+          className={`${"zoneDePiocheComputer"} ${!isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
+        >
           <Deck
             handleSetAnimalP1={handleSetAnimalP1}
             setShowVersoCard={setShowVersoCard}
             isP1={false}
             cpuIdDeckCard={cpuIdDeckCard}
             showVersoCard={showVersoCard}
+            setIsP1Turn={setIsP1Turn}
           />
         </div>
       </section>

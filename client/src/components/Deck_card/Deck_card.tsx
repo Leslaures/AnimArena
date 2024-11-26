@@ -1,5 +1,5 @@
-import "./Deck_card.css";
 import { useEffect, useState } from "react";
+import "./Deck_card.css";
 import type { AnimalType } from "../../pages/Game_page";
 
 interface Deck_cardProps {
@@ -9,6 +9,7 @@ interface Deck_cardProps {
   isP1: boolean;
   cpuIdDeckCard: string;
   indexInDeck: string;
+  setIsP1Turn: (show: boolean) => void;
 }
 
 function Deck_card({
@@ -18,6 +19,7 @@ function Deck_card({
   indexInDeck,
   showVersoCard,
   setShowVersoCard,
+  setIsP1Turn,
 }: Deck_cardProps) {
   const [isButtonClickable, setIsButtonClickable] = useState(true);
   const [isDistributing, setIsDistributing] = useState(false);
@@ -35,6 +37,10 @@ function Deck_card({
             setIsButtonClickable(false);
             setShowVersoCard(true);
             setIsDistributing(false);
+            const timer = setTimeout(() => {
+              setIsP1Turn(false); // tour du CPU  /*TODO:*/
+            }, 2000);
+            return () => clearTimeout(timer);
           })
           .catch((error) => {
             console.error(error);

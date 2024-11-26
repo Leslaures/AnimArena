@@ -1,13 +1,14 @@
 import "./Selected_characteristic.css";
+import type { SelectedCharType } from "../../pages/Game_page";
 
 interface selectedChar {
-  selectedChar: string | null;
+  selectedChar: SelectedCharType;
 }
 
 function Selected_characteristic({ selectedChar }: selectedChar) {
   return (
     <div id="selected_char">
-      <h1>{selectedChar}</h1>
+      <h1>{`${selectedChar.label} : ${selectedChar.value} ${selectedChar.unit}`}</h1>
     </div>
   );
 }

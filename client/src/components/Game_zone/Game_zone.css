@@ -11,7 +11,10 @@ main {
 p {
   font-size: 3rem;
 }
-
+.grayed-out {
+  opacity: 0.5;
+  pointer-events: none; /* Désactive les interactions avec les éléments grisés */
+}
 #imgPlayerContainer,
 #imgComputerContainer {
   height: 600px;

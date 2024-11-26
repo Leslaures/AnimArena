@@ -1,12 +1,14 @@
-import type { AnimalType } from "../../pages/Game_page";
 import "./Animals_card.css";
+import type { AnimalType } from "../../pages/Game_page";
+import type { SelectedCharType } from "../../pages/Game_page";
 
 interface Animals_cardProps {
   animal: AnimalType;
-  selectedChar: string;
-  setSelectedChar: (selectedChar: string) => void;
+  selectedChar: SelectedCharType;
+  setSelectedChar: (selectedChar: SelectedCharType) => void;
   onValidateCharacteristic: () => void;
   isP1: boolean;
+  setIsP1Turn: (show: boolean) => void;
 }
 
 let isSelectedChar = false;
@@ -17,11 +19,17 @@ function Animals_card({
   setSelectedChar,
   onValidateCharacteristic,
   isP1,
+  setIsP1Turn,
 }: Animals_cardProps) {
   // Permet de récupérer la caractéristique choisie
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = JSON.parse(event.target.value);
-    const formattedValue = `${value.label} : ${value.value} ${value.unité}`;
+    const formattedValue = {
+      label: value.label,
+      value: value.value,
+      unit: value.unité,
+    };
+
     setSelectedChar(formattedValue);
     isSelectedChar = true;
   };
@@ -32,6 +40,7 @@ function Animals_card({
     onValidateCharacteristic();
     isSelectedChar = false;
     isValidatedChar = true;
+    setIsP1Turn(false); // tour du CPU  /*TODO:*/
   };
 
   return (
