@@ -93,7 +93,11 @@ function Game_zone({
       new Promise((resolve) => setTimeout(resolve, ms));
     const determineWinner = async () => {
       if (selectedChar && charCPU) {
-        setIsP1Turn(null); // tour du CPU /*TODO:*/
+        await delay(
+          2000,
+        ); /*GREY : SIXIEME passage au tour de personne après que CPU ait dévoiler sa carte*/
+
+        setIsP1Turn(null); // tour du CPU /*TODO: ajouter un délai */
         let winnerMessage: string;
         let winnerEmoji: string;
         let winner: string;
@@ -180,17 +184,9 @@ function Game_zone({
   /*SECTION : Choisit quelle aide afficher*/
   useEffect(() => {
     if (showVersoCardCPU) {
-      setHelp(
-        "C'est au tour de l'ordinateur de jouer",
-      ); /*TODO: trouver les interractions à surveiller pour afficher "l'ordinateur joue*/
-    }
-  }, [showVersoCardCPU]);
-
-  useEffect(() => {
-    if (showVersoCardCPU) {
       const timer = setTimeout(() => {
         setHelp("Clique sur ta carte pour la révéler");
-      }, 1300);
+      }, 0);
       return () => clearTimeout(timer);
     }
   }, [showVersoCardCPU]);
@@ -213,10 +209,10 @@ function Game_zone({
     setShowVersoCard(true);
     const timer = setTimeout(() => {
       setshowVersoCardCPU(true);
-    }, 1400);
+    }, 2000); /*GREY : DEUXIEME CPU montre le dos de sa carte après que P1 montre le sien */
     const timer2 = setTimeout(() => {
-      setIsP1Turn(true); // tour du P1  /*TODO:*/
-    }, 4000);
+      setIsP1Turn(true);
+    }, 3000); /*GREY : TROISIEME passage au tour du P1 après que CPU révèle le dos de sa carte*/
     return function clearTimeoutFct() {
       clearTimeout(timer2);
       clearTimeout(timer);

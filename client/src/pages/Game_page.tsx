@@ -50,7 +50,7 @@ function Game_page() {
     if (characteristicValidated) {
       const timer = setTimeout(() => {
         playComputerTurn();
-      }, 1000);
+      }, 1000); /*GREY : CINQUIEME CPU dévoile le recto de sa carte après 1s*/
       return () => clearTimeout(timer);
     }
   }, [characteristicValidated]);
