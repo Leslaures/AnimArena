@@ -18,6 +18,8 @@ interface GamezoneProps {
   winnerMessage: string | null;
   setWinnerMessage: (winnerMessage: string) => void;
   setWinnerEmoji: (winnerEmoji: string) => void;
+  setAnimalComputer: (animal: AnimalType | null) => void;
+  characteristicValidated: boolean;
 }
 
 function Game_zone({
@@ -30,6 +32,8 @@ function Game_zone({
   winnerMessage,
   setWinnerMessage,
   setWinnerEmoji,
+  setAnimalComputer,
+  characteristicValidated,
 }: GamezoneProps) {
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
@@ -40,8 +44,11 @@ function Game_zone({
     "Clique sur une carte dans ta zone de pioche",
   );
   const [charCPU, setCharCPU] = useState(0);
-  const [show, setShow] = useState(false);
+  const [showWinnerModal, setShowWinnerModal] = useState(false);
   const [isP1Turn, setIsP1Turn] = useState<boolean | null>(true);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [cpuScore, setCpuScore] = useState(0);
+  const [round, setRound] = useState(1);
 
   // Permet de setter la caractéristique du CPU
   useEffect(() => {
@@ -73,30 +80,76 @@ function Game_zone({
     }
   }, [selectedChar, animalComputer]);
 
-  // Permet de définir le gagnant
+  // Permet de définir le gagnant d'une manche
   useEffect(() => {
-    if (selectedChar && charCPU) {
-      setIsP1Turn(null); // tour du CPU /*TODO:*/
-      let winnerMessage: string;
-      let winnerEmoji: string;
-      if (selectedChar.value > charCPU) {
-        winnerMessage = "Bravo, tu as remporté la manche !";
-        winnerEmoji = "🎉";
-      } else if (selectedChar.value < charCPU) {
-        winnerMessage = "L'ordinateur a remporté la manche !";
-        winnerEmoji = "🤖";
-      } else {
-        winnerMessage = "Vous êtes à égalité !";
-        winnerEmoji = "🤝";
-      }
-      const timer = setTimeout(() => {
+    // Fonction utilitaire pour delay
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+    const determineWinner = async () => {
+      if (selectedChar && charCPU) {
+        setIsP1Turn(null); // tour du CPU /*TODO:*/
+        let winnerMessage: string;
+        let winnerEmoji: string;
+        if (selectedChar.value > charCPU) {
+          winnerMessage = "Bravo, tu as remporté la manche !";
+          winnerEmoji = "🎉";
+          setPlayerScore((prevPlayerScore) => prevPlayerScore + 1);
+        } else if (selectedChar.value < charCPU) {
+          winnerMessage = "L'ordinateur a remporté la manche !";
+          winnerEmoji = "🤖";
+          setCpuScore((prevCpuScore) => prevCpuScore + 1);
+        } else {
+          winnerMessage = "Vous êtes à égalité !";
+          winnerEmoji = "🤝";
+          setCpuScore((prevCpuScore) => prevCpuScore + 1);
+          setPlayerScore((prevPlayerScore) => prevPlayerScore + 1);
+        }
+
+        await delay(2000);
+
         setWinnerEmoji(winnerEmoji);
         setWinnerMessage(winnerMessage);
-        setShow(true);
-      }, 5000);
-      return () => clearTimeout(timer);
+        setShowWinnerModal(true);
+
+        await delay(4000);
+
+        setRound((prevRound) => prevRound + 1);
+        setAnimalP1(null);
+        setShowVersoCard(false);
+        setShowRectoCard(false);
+        setshowVersoCardCPU(false);
+        setCpuIdDeckCard("");
+        setHelp("Clique sur une carte dans ta zone de pioche");
+        setCharCPU(0);
+        setShowWinnerModal(false);
+        setIsP1Turn(true);
+        setAnimalComputer(null);
+        setCharacteristicValidated(false);
+      }
+    };
+    determineWinner();
+  }, [
+    selectedChar,
+    charCPU,
+    setAnimalComputer,
+    setCharacteristicValidated,
+    setWinnerEmoji,
+    setWinnerMessage,
+  ]);
+
+  // Permet de vérifier si le jeu est terminé après 5 manches
+  useEffect(() => {
+    if (round >= 5) {
+      setTimeout(() => {
+        alert(
+          `Jeu terminé ! Score final - Joueur : ${playerScore}, Ordinateur : ${cpuScore}`,
+        );
+        setPlayerScore(0);
+        setCpuScore(0);
+        setRound(1);
+      }, 1000);
     }
-  }, [selectedChar, charCPU, setWinnerMessage, setWinnerEmoji]);
+  }, [round, playerScore, cpuScore]);
 
   // Choisit quel index de carte CPU à défausser
   useEffect(() => {
@@ -161,6 +214,10 @@ function Game_zone({
 
   return (
     <main>
+      <h1>Manche {round}</h1>
+      <p>
+        Score : Joueur {playerScore} - {cpuScore} Ordinateur
+      </p>
       <section id="zoneDeJeu">
         <div
           className={`${"zoneDePiochePlayer"} ${isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
@@ -200,6 +257,7 @@ function Game_zone({
                   onValidateCharacteristic={() =>
                     setCharacteristicValidated(true)
                   }
+                  characteristicValidated={characteristicValidated}
                 />
               )}
             </div>
@@ -225,6 +283,7 @@ function Game_zone({
                   onValidateCharacteristic={() =>
                     setCharacteristicValidated(true)
                   }
+                  characteristicValidated={characteristicValidated}
                 />
               )}
             </div>
@@ -246,7 +305,10 @@ function Game_zone({
         </div>
       </section>
       <Help help={help} />
-      <Winner_modal show={show} onClose={() => setShow(false)}>
+      <Winner_modal
+        show={showWinnerModal}
+        onClose={() => setShowWinnerModal(false)}
+      >
         <Winner winnerMessage={winnerMessage} winnerEmoji={winnerEmoji} />
       </Winner_modal>
     </main>

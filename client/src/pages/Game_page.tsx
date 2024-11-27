@@ -82,11 +82,13 @@ function Game_page() {
         selectedChar={selectedChar}
         setSelectedChar={setSelectedChar}
         setCharacteristicValidated={setCharacteristicValidated}
+        characteristicValidated={characteristicValidated}
         animalComputer={animalComputer}
         winnerMessage={winnerMessage}
         winnerEmoji={winnerEmoji}
         setWinnerMessage={setWinnerMessage}
         setWinnerEmoji={setWinnerEmoji}
+        setAnimalComputer={setAnimalComputer}
       />
     </div>
   );

@@ -109,6 +109,7 @@ function EncyclopediaPage() {
             isP1={false}
             setIsP1Turn={() => {}}
             selectedChar={selectedChar}
+            characteristicValidated={false}
           />
           <button
             type="button"

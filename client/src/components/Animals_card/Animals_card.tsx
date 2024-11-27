@@ -9,10 +9,10 @@ interface Animals_cardProps {
   onValidateCharacteristic: () => void;
   isP1: boolean;
   setIsP1Turn: (show: boolean) => void;
+  characteristicValidated: boolean;
 }
 
 let isSelectedChar = false;
-let isValidatedChar = false;
 
 function Animals_card({
   animal,
@@ -20,6 +20,7 @@ function Animals_card({
   onValidateCharacteristic,
   isP1,
   setIsP1Turn,
+  characteristicValidated,
 }: Animals_cardProps) {
   // Permet de récupérer la caractéristique choisie
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +40,6 @@ function Animals_card({
     event.preventDefault();
     onValidateCharacteristic();
     isSelectedChar = false;
-    isValidatedChar = true;
     setIsP1Turn(false); // tour du CPU  /*TODO:*/
   };
 
@@ -57,7 +57,7 @@ function Animals_card({
         <fieldset>
           <div>
             <input
-              className={`${isP1 ? "" : "CPU"} ${isValidatedChar ? "formDisabled" : ""}`}
+              className={`${isP1 ? "" : "CPU"} ${characteristicValidated ? "formDisabled" : ""}`}
               type="radio"
               id="vitesse"
               name="characteristic"
@@ -69,7 +69,7 @@ function Animals_card({
               onChange={handleCharacteristic}
             />
             <label
-              className={`${isP1 ? "" : "CPUlabel"} ${isValidatedChar ? "formDisabledLabel" : ""}`}
+              className={`${isP1 ? "" : "CPUlabel"} ${characteristicValidated ? "formDisabledLabel" : ""}`}
               htmlFor="vitesse"
             >
               Vitesse : {animal.vitesse_kmh} km/h
@@ -78,7 +78,7 @@ function Animals_card({
 
           <div>
             <input
-              className={`${isP1 ? "" : "CPU"} ${isValidatedChar ? "formDisabled" : ""}`}
+              className={`${isP1 ? "" : "CPU"} ${characteristicValidated ? "formDisabled" : ""}`}
               type="radio"
               id="poids"
               name="characteristic"
@@ -91,14 +91,14 @@ function Animals_card({
             />
             <label
               htmlFor="poids"
-              className={`${isP1 ? "" : "CPUlabel"} ${isValidatedChar ? "formDisabledLabel" : ""}`}
+              className={`${isP1 ? "" : "CPUlabel"} ${characteristicValidated ? "formDisabledLabel" : ""}`}
             >
               Poids : {animal.poids_kg} kg
             </label>
           </div>
           <div>
             <input
-              className={`${isP1 ? "" : "CPU"} ${isValidatedChar ? "formDisabled" : ""}`}
+              className={`${isP1 ? "" : "CPU"} ${characteristicValidated ? "formDisabled" : ""}`}
               type="radio"
               id="longueur"
               name="characteristic"
@@ -111,14 +111,14 @@ function Animals_card({
             />
             <label
               htmlFor="longueur"
-              className={`${isP1 ? "" : "CPUlabel"} ${isValidatedChar ? "formDisabledLabel" : ""}`}
+              className={`${isP1 ? "" : "CPUlabel"} ${characteristicValidated ? "formDisabledLabel" : ""}`}
             >
               Longueur : {animal.longueur_cm} cm
             </label>
           </div>
           <div>
             <input
-              className={`${isP1 ? "" : "CPU"} ${isValidatedChar ? "formDisabled" : ""}`}
+              className={`${isP1 ? "" : "CPU"} ${characteristicValidated ? "formDisabled" : ""}`}
               type="radio"
               id="longevite"
               name="characteristic"
@@ -131,14 +131,14 @@ function Animals_card({
             />
             <label
               htmlFor="longevite"
-              className={`${isP1 ? "" : "CPUlabel"} ${isValidatedChar ? "formDisabledLabel" : ""}`}
+              className={`${isP1 ? "" : "CPUlabel"} ${characteristicValidated ? "formDisabledLabel" : ""}`}
             >
               Longévité : {animal.longevite_ans} ans
             </label>
           </div>
           <div>
             <input
-              className={`${isP1 ? "" : "CPU"} ${isValidatedChar ? "formDisabled" : ""}`}
+              className={`${isP1 ? "" : "CPU"} ${characteristicValidated ? "formDisabled" : ""}`}
               type="radio"
               id="gestation"
               name="characteristic"
@@ -151,7 +151,7 @@ function Animals_card({
             />
             <label
               htmlFor="gestation"
-              className={`${isP1 ? "" : "CPUlabel"} ${isValidatedChar ? "formDisabledLabel" : ""}`}
+              className={`${isP1 ? "" : "CPUlabel"} ${characteristicValidated ? "formDisabledLabel" : ""}`}
             >
               Gestation : {animal.gestation_jours} jours
             </label>
