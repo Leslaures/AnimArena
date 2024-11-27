@@ -5,6 +5,7 @@ import type { SelectedCharType } from "../../pages/Game_page";
 import Animals_card from "../Animals_card/Animals_card";
 import Deck from "../Deck/Deck";
 import Help from "../Help/Help";
+import Round from "../Round/Round";
 import Winner from "../Winner/Winner";
 import Winner_modal from "../Winner_modal/Winner_modal";
 
@@ -20,6 +21,8 @@ interface GamezoneProps {
   setWinnerEmoji: (winnerEmoji: string) => void;
   setAnimalComputer: (animal: AnimalType | null) => void;
   characteristicValidated: boolean;
+  charCPU: number;
+  setCharCPU: (charCPU: number) => void;
 }
 
 function Game_zone({
@@ -34,7 +37,10 @@ function Game_zone({
   setWinnerEmoji,
   setAnimalComputer,
   characteristicValidated,
+  charCPU,
+  setCharCPU,
 }: GamezoneProps) {
+  //Constantes d'état
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
@@ -43,7 +49,7 @@ function Game_zone({
   const [help, setHelp] = useState(
     "Clique sur une carte dans ta zone de pioche",
   );
-  const [charCPU, setCharCPU] = useState(0);
+
   const [showWinnerModal, setShowWinnerModal] = useState(false);
   const [isP1Turn, setIsP1Turn] = useState<boolean | null>(true);
   const [playerScore, setPlayerScore] = useState(0);
@@ -78,7 +84,7 @@ function Game_zone({
       console.info("CPU Characteristic:", cpuValue);
       console.info("Player Characteristic:", selectedChar);
     }
-  }, [selectedChar, animalComputer]);
+  }, [selectedChar, animalComputer, setCharCPU]);
 
   // Permet de définir le gagnant d'une manche
   useEffect(() => {
@@ -125,6 +131,7 @@ function Game_zone({
         setIsP1Turn(true);
         setAnimalComputer(null);
         setCharacteristicValidated(false);
+        setSelectedChar({ label: "", value: 0, unit: "" });
       }
     };
     determineWinner();
@@ -135,6 +142,8 @@ function Game_zone({
     setCharacteristicValidated,
     setWinnerEmoji,
     setWinnerMessage,
+    setSelectedChar,
+    setCharCPU,
   ]);
 
   // Permet de vérifier si le jeu est terminé après 5 manches
@@ -214,10 +223,7 @@ function Game_zone({
 
   return (
     <main>
-      <h1>Manche {round}</h1>
-      <p>
-        Score : Joueur {playerScore} - {cpuScore} Ordinateur
-      </p>
+      <Round round={round} />
       <section id="zoneDeJeu">
         <div
           className={`${"zoneDePiochePlayer"} ${isP1Turn || isP1Turn === null ? "" : "grayed-out"}`}
@@ -261,7 +267,9 @@ function Game_zone({
                 />
               )}
             </div>
-            <p>{pseudo || "Joueur"}</p>
+            <p>
+              {pseudo || "Joueur"} : {playerScore}
+            </p>
           </div>
         </section>
 
@@ -287,7 +295,7 @@ function Game_zone({
                 />
               )}
             </div>
-            <p>Ordinateur</p>
+            <p>Ordinateur : {cpuScore}</p>
           </div>
         </section>
 

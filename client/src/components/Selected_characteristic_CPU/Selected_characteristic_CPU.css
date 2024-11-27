@@ -1,11 +1,11 @@
-#selected_char {
+#selected_char_cpu {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5vh;
   position: fixed;
   bottom: 3%;
-  left: 32.5%;
+  right: 11.5%;
   transform: translateX(-50%);
   h1 {
     background-color: rgba(255, 251, 251, 0.8);

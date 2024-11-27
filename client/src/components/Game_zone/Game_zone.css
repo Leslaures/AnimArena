@@ -46,7 +46,7 @@ p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  margin-top: 150px;
 }
 #imgPlayerContainer {
   height: 600px;
@@ -64,6 +64,8 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
 
 /* ///////Responsive//////// */

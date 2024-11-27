@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "./Game_page.css";
-import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
 import Selected_characteristic from "../components/Selected_characteristic/Selected_characteristic";
+import Selected_characteristic_CPU from "../components/Selected_characteristic_CPU/Selected_characteristic_CPU";
 
 export type AnimalType = {
   nom: string;
@@ -37,6 +37,7 @@ function Game_page() {
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
   const [winnerMessage, setWinnerMessage] = useState<string | null>(null);
   const [winnerEmoji, setWinnerEmoji] = useState<string | null>(null);
+  const [charCPU, setCharCPU] = useState<number | 0>(0);
 
   //Permet de naviguer vers l'Encyclopédie
   const handleEncyclopediaClick = () => {
@@ -67,14 +68,17 @@ function Game_page() {
     <div id="gamePage">
       <div className="hide-mobile-screen">
         <Selected_characteristic selectedChar={selectedChar} />
-        <GameRulesModal />
+        <Selected_characteristic_CPU
+          charCPU={charCPU}
+          selectedChar={selectedChar}
+        />
       </div>
       <button
         type="button"
         onClick={handleEncyclopediaClick}
         className="encyclopedia-button"
       >
-        Encyclopédie
+        <span>Encyclopédie</span>
       </button>
 
       <Game_zone
@@ -89,6 +93,8 @@ function Game_page() {
         setWinnerMessage={setWinnerMessage}
         setWinnerEmoji={setWinnerEmoji}
         setAnimalComputer={setAnimalComputer}
+        setCharCPU={setCharCPU}
+        charCPU={charCPU}
       />
     </div>
   );
