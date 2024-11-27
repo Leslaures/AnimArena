@@ -55,6 +55,7 @@ function Game_zone({
   const [playerScore, setPlayerScore] = useState(0);
   const [cpuScore, setCpuScore] = useState(0);
   const [round, setRound] = useState(1);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   /*SECTION : Permet de setter la caractéristique du CPU*/
   useEffect(() => {
@@ -230,6 +231,7 @@ function Game_zone({
 
   /*SECTION : Permet de retourner la carte du P1*/
   const handleVersoClick = () => {
+    setIsFlipped(true);
     setShowRectoCard(true);
   };
 
@@ -265,20 +267,35 @@ function Game_zone({
               onClick={handleVersoClick}
               onKeyUp={handleVersoClick}
             >
-              {showRectoCard && animal && (
-                <Animals_card
-                  isP1={true}
-                  animal={animal}
-                  selectedChar={selectedChar}
-                  setSelectedChar={setSelectedChar}
-                  setIsP1Turn={setIsP1Turn}
-                  onValidateCharacteristic={() =>
-                    setCharacteristicValidated(true)
-                  }
-                  characteristicValidated={characteristicValidated}
-                />
-              )}
+              <div className={`flip-card ${isFlipped ? "flipped" : ""}`}>
+                <div className="flip-card-front">
+                  {/* Contenu de la carte recto */}
+                  {showVersoCard && !showRectoCard && (
+                    <div className="card-content">
+                      {/* Contenu du verso */}
+                      <p> </p>
+                    </div>
+                  )}
+                </div>
+                <div className="flip-card-back">
+                  {/* Contenu de la carte verso */}
+                  {showRectoCard && animal && (
+                    <Animals_card
+                      isP1={true}
+                      animal={animal}
+                      selectedChar={selectedChar}
+                      setSelectedChar={setSelectedChar}
+                      setIsP1Turn={setIsP1Turn}
+                      onValidateCharacteristic={() =>
+                        setCharacteristicValidated(true)
+                      }
+                      characteristicValidated={characteristicValidated}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
+
             <p>
               {pseudo || "Joueur"} : {playerScore}
             </p>
