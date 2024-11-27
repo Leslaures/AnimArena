@@ -19,16 +19,17 @@
 }
 .winner {
   animation: pulse 1s infinite;
+  color: #556b2f;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
+    transform: scale(1) translateX(-50%);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.05) translateX(-50%);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translateX(-50%);
   }
 }
