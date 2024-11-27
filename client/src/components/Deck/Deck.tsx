@@ -8,6 +8,7 @@ interface Deck_cardProps {
   isP1: boolean;
   cpuIdDeckCard: string;
   showVersoCard: boolean;
+  setIsP1Turn: (show: boolean) => void;
 }
 
 //Sert à afficher les cartes du deck
@@ -18,6 +19,7 @@ function Deck({
   handleSetAnimalP1,
   setShowVersoCard,
   showVersoCard,
+  setIsP1Turn,
 }: Deck_cardProps) {
   return (
     <div id="deck">
@@ -28,6 +30,7 @@ function Deck({
         cpuIdDeckCard={cpuIdDeckCard}
         indexInDeck={"1"}
         showVersoCard={showVersoCard}
+        setIsP1Turn={setIsP1Turn}
       />
       <Deck_card
         handleSetAnimalP1={handleSetAnimalP1}
@@ -36,6 +39,7 @@ function Deck({
         cpuIdDeckCard={cpuIdDeckCard}
         indexInDeck={"2"}
         showVersoCard={showVersoCard}
+        setIsP1Turn={setIsP1Turn}
       />
       <Deck_card
         handleSetAnimalP1={handleSetAnimalP1}
@@ -44,6 +48,7 @@ function Deck({
         cpuIdDeckCard={cpuIdDeckCard}
         indexInDeck={"3"}
         showVersoCard={showVersoCard}
+        setIsP1Turn={setIsP1Turn}
       />
       <Deck_card
         handleSetAnimalP1={handleSetAnimalP1}
@@ -52,6 +57,7 @@ function Deck({
         cpuIdDeckCard={cpuIdDeckCard}
         indexInDeck={"4"}
         showVersoCard={showVersoCard}
+        setIsP1Turn={setIsP1Turn}
       />
       <Deck_card
         handleSetAnimalP1={handleSetAnimalP1}
@@ -60,6 +66,7 @@ function Deck({
         cpuIdDeckCard={cpuIdDeckCard}
         indexInDeck={"5"}
         showVersoCard={showVersoCard}
+        setIsP1Turn={setIsP1Turn}
       />
     </div>
   );

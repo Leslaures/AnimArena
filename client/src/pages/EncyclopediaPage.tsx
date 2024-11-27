@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Animals_card from "../components/Animals_card/Animals_card";
 import "./EncyclopediaPage.css";
 import type { AnimalType } from "../pages/Game_page";
+import type { SelectedCharType } from "../pages/Game_page";
 
 function EncyclopediaPage() {
   const [animals, setAnimals] = useState<AnimalType[]>([]);
   const [currentAnimalIndex, setCurrentAnimalIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredAnimals, setFilteredAnimals] = useState<AnimalType[]>([]);
+  const selectedChar: SelectedCharType = { label: "", value: 0, unit: "" };
 
   // Récupère les données de l'API au chargement
   useEffect(() => {
@@ -105,7 +107,9 @@ function EncyclopediaPage() {
             setSelectedChar={() => {}}
             onValidateCharacteristic={() => {}}
             isP1={false}
-            selectedChar={""}
+            setIsP1Turn={() => {}}
+            selectedChar={selectedChar}
+            characteristicValidated={false}
           />
           <button
             type="button"

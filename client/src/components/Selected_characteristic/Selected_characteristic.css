@@ -4,8 +4,9 @@
   align-items: center;
   height: 5vh;
   position: fixed;
-  top: 3%;
-  right: 40%;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
   h1 {
     background-color: rgba(255, 251, 251, 0.8);
     padding: 0px 10px;

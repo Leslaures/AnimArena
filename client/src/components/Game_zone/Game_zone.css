@@ -9,7 +9,11 @@ main {
   height: 100%;
 }
 p {
-  font-size: 3rem;
+  font-size: 2rem;
+}
+.grayed-out {
+  opacity: 0.5;
+  pointer-events: none; /* Désactive les interactions avec les éléments grisés */
 }
 #imgPlayerContainer,
 #imgComputerContainer {
@@ -31,7 +35,10 @@ p {
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
 }
-
+.backgroundImage:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
 .zoneDeJeuComputer,
 .zoneDeJeuPlayer {
   display: flex;

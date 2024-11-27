@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import "./Game_page.css";
 import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
-import "./Game_page.css";
-import { useEffect, useState } from "react";
 import Selected_characteristic from "../components/Selected_characteristic/Selected_characteristic";
 
 export type AnimalType = {
@@ -18,10 +18,20 @@ export type AnimalType = {
   vitesse_kmh: number;
 };
 
+export type SelectedCharType = {
+  label: string;
+  value: number;
+  unit: string;
+};
+
 function Game_page() {
   const { pseudo } = useOutletContext<{ pseudo: string }>();
   const navigate = useNavigate(); // Pour naviguer entre les pages
-  const [selectedChar, setSelectedChar] = useState<string>("");
+  const [selectedChar, setSelectedChar] = useState<SelectedCharType>({
+    label: "",
+    value: 0,
+    unit: "",
+  });
   const [characteristicValidated, setCharacteristicValidated] =
     useState<boolean>(false);
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
@@ -59,19 +69,6 @@ function Game_page() {
         <Selected_characteristic selectedChar={selectedChar} />
         <GameRulesModal />
       </div>
-
-      <Game_zone
-        pseudo={pseudo}
-        selectedChar={selectedChar}
-        setSelectedChar={setSelectedChar}
-        setCharacteristicValidated={setCharacteristicValidated}
-        animalComputer={animalComputer}
-        winnerMessage={winnerMessage}
-        winnerEmoji={winnerEmoji}
-        setWinnerMessage={setWinnerMessage}
-        setWinnerEmoji={setWinnerEmoji}
-      />
-      {/* Bouton vers l'Encyclopédie */}
       <button
         type="button"
         onClick={handleEncyclopediaClick}
@@ -79,6 +76,20 @@ function Game_page() {
       >
         Encyclopédie
       </button>
+
+      <Game_zone
+        pseudo={pseudo}
+        selectedChar={selectedChar}
+        setSelectedChar={setSelectedChar}
+        setCharacteristicValidated={setCharacteristicValidated}
+        characteristicValidated={characteristicValidated}
+        animalComputer={animalComputer}
+        winnerMessage={winnerMessage}
+        winnerEmoji={winnerEmoji}
+        setWinnerMessage={setWinnerMessage}
+        setWinnerEmoji={setWinnerEmoji}
+        setAnimalComputer={setAnimalComputer}
+      />
     </div>
   );
 }
