@@ -23,6 +23,7 @@ interface GamezoneProps {
   characteristicValidated: boolean;
   charCPU: number;
   setCharCPU: (charCPU: number) => void;
+  setWinner: (winner: string) => void;
 }
 
 function Game_zone({
@@ -39,16 +40,15 @@ function Game_zone({
   characteristicValidated,
   charCPU,
   setCharCPU,
+  setWinner,
 }: GamezoneProps) {
-  //Constantes d'état
+  /*SECTION: Constantes d'état*/
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
   const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
-  const [help, setHelp] = useState(
-    "Clique sur une carte dans ta zone de pioche",
-  );
+  const [help, setHelp] = useState("Choisis une carte dans ta zone de pioche");
 
   const [showWinnerModal, setShowWinnerModal] = useState(false);
   const [isP1Turn, setIsP1Turn] = useState<boolean | null>(true);
@@ -56,7 +56,7 @@ function Game_zone({
   const [cpuScore, setCpuScore] = useState(0);
   const [round, setRound] = useState(1);
 
-  // Permet de setter la caractéristique du CPU
+  /*SECTION : Permet de setter la caractéristique du CPU*/
   useEffect(() => {
     if (selectedChar && animalComputer) {
       // Mapper les labels aux propriétés de l'objet animalComputer
@@ -86,7 +86,7 @@ function Game_zone({
     }
   }, [selectedChar, animalComputer, setCharCPU]);
 
-  // Permet de définir le gagnant d'une manche
+  /*SECTION : Permet de définir le gagnant d'une manche*/
   useEffect(() => {
     // Fonction utilitaire pour delay
     const delay = (ms: number) =>
@@ -96,22 +96,27 @@ function Game_zone({
         setIsP1Turn(null); // tour du CPU /*TODO:*/
         let winnerMessage: string;
         let winnerEmoji: string;
+        let winner: string;
         if (selectedChar.value > charCPU) {
           winnerMessage = "Bravo, tu as remporté la manche !";
           winnerEmoji = "🎉";
           setPlayerScore((prevPlayerScore) => prevPlayerScore + 1);
+          winner = "player";
         } else if (selectedChar.value < charCPU) {
           winnerMessage = "L'ordinateur a remporté la manche !";
           winnerEmoji = "🤖";
           setCpuScore((prevCpuScore) => prevCpuScore + 1);
+          winner = "cpu";
         } else {
           winnerMessage = "Vous êtes à égalité !";
           winnerEmoji = "🤝";
           setCpuScore((prevCpuScore) => prevCpuScore + 1);
           setPlayerScore((prevPlayerScore) => prevPlayerScore + 1);
+          winner = "égalité";
         }
+        setWinner(winner);
 
-        await delay(2000);
+        await delay(4000);
 
         setWinnerEmoji(winnerEmoji);
         setWinnerMessage(winnerMessage);
@@ -132,6 +137,7 @@ function Game_zone({
         setAnimalComputer(null);
         setCharacteristicValidated(false);
         setSelectedChar({ label: "", value: 0, unit: "" });
+        setWinner("");
       }
     };
     determineWinner();
@@ -144,11 +150,12 @@ function Game_zone({
     setWinnerMessage,
     setSelectedChar,
     setCharCPU,
+    setWinner,
   ]);
 
-  // Permet de vérifier si le jeu est terminé après 5 manches
+  /*SECTION :Permet de vérifier si le jeu est terminé après 5 manches*/
   useEffect(() => {
-    if (round >= 5) {
+    if (round > 5) {
       setTimeout(() => {
         alert(
           `Jeu terminé ! Score final - Joueur : ${playerScore}, Ordinateur : ${cpuScore}`,
@@ -160,7 +167,7 @@ function Game_zone({
     }
   }, [round, playerScore, cpuScore]);
 
-  // Choisit quel index de carte CPU à défausser
+  /*SECTION : Choisit quel index de carte CPU à défausser*/
   useEffect(() => {
     if (showVersoCardCPU) {
       const randomCpuIdDeckCard = (
@@ -170,7 +177,7 @@ function Game_zone({
     }
   }, [showVersoCardCPU]);
 
-  // Choisit quelle aide afficher
+  /*SECTION : Choisit quelle aide afficher*/
   useEffect(() => {
     if (showVersoCardCPU) {
       setHelp(
@@ -190,7 +197,7 @@ function Game_zone({
 
   useEffect(() => {
     if (showRectoCard) {
-      setHelp("Choisis une caractéristique à comparer");
+      setHelp("Choisis la caractéristique sur laquelle tu veux lancer le duel");
     }
   }, [showRectoCard]);
 
@@ -200,7 +207,7 @@ function Game_zone({
     }
   }, [selectedChar]);
 
-  // Permet de synchroniser l'affichage de la carte du CPU avec celle du P1
+  /*SECTION : Permet de synchroniser l'affichage de la carte du CPU avec celle du P1*/
   const handleSetAnimalP1 = (animal: AnimalType) => {
     setAnimalP1(animal);
     setShowVersoCard(true);
@@ -216,7 +223,7 @@ function Game_zone({
     };
   };
 
-  // Permet de retourner la carte du P1
+  /*SECTION : Permet de retourner la carte du P1*/
   const handleVersoClick = () => {
     setShowRectoCard(true);
   };

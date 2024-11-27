@@ -3,11 +3,12 @@ import type { SelectedCharType } from "../../pages/Game_page";
 
 interface selectedChar {
   selectedChar: SelectedCharType;
+  winner: string | null;
 }
 
-function Selected_characteristic({ selectedChar }: selectedChar) {
+function Selected_characteristic({ selectedChar, winner }: selectedChar) {
   return (
-    <div id="selected_char">
+    <div id="selected_char" className={winner === "player" ? "winner" : ""}>
       {selectedChar.value !== 0 && (
         <h1>{`${selectedChar.label} : ${selectedChar.value} ${selectedChar.unit}`}</h1>
       )}

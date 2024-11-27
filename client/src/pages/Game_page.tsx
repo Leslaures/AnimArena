@@ -38,13 +38,14 @@ function Game_page() {
   const [winnerMessage, setWinnerMessage] = useState<string | null>(null);
   const [winnerEmoji, setWinnerEmoji] = useState<string | null>(null);
   const [charCPU, setCharCPU] = useState<number | 0>(0);
+  const [winner, setWinner] = useState<string | null>(null);
 
-  //Permet de naviguer vers l'Encyclopédie
+  /*SECTION : Permet de naviguer vers l'Encyclopédie */
   const handleEncyclopediaClick = () => {
     navigate("/encyclopedia");
   };
 
-  // Permet de récupérer une carte aléatoire dans l'API pour CPU
+  /*SECTION : Permet de récupérer une carte aléatoire dans l'API pour CPU */
   useEffect(() => {
     if (characteristicValidated) {
       const timer = setTimeout(() => {
@@ -67,10 +68,11 @@ function Game_page() {
   return (
     <div id="gamePage">
       <div className="hide-mobile-screen">
-        <Selected_characteristic selectedChar={selectedChar} />
+        <Selected_characteristic selectedChar={selectedChar} winner={winner} />
         <Selected_characteristic_CPU
           charCPU={charCPU}
           selectedChar={selectedChar}
+          winner={winner}
         />
       </div>
       <button
@@ -95,6 +97,7 @@ function Game_page() {
         setAnimalComputer={setAnimalComputer}
         setCharCPU={setCharCPU}
         charCPU={charCPU}
+        setWinner={setWinner}
       />
     </div>
   );

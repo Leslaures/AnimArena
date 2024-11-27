@@ -17,3 +17,7 @@
     box-shadow: 1px 5px 10px black;
   }
 }
+.winner {
+  color: green;
+  font-weight: bolder;
+}

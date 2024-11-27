@@ -8,12 +8,16 @@
   left: 32.5%;
   transform: translateX(-50%);
   h1 {
-    background-color: rgba(255, 251, 251, 0.8);
     padding: 0px 10px;
+    background-color: rgba(255, 251, 251, 0.8);
     width: 400px;
     min-height: 60px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 1px 5px 10px black;
   }
+}
+.winner {
+  color: green;
+  font-weight: bolder;
 }
