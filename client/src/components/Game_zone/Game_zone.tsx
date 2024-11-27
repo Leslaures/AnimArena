@@ -23,9 +23,11 @@ interface GamezoneProps {
   characteristicValidated: boolean;
   charCPU: number;
   setCharCPU: (charCPU: number) => void;
-  setWinner: (winner: string) => void;
+  setWinner: (winner: string | null) => void;
   showRectoCardCPU: boolean;
   isFlippedCPU: boolean;
+  setShowRectoCardCPU: (show: boolean) => void;
+  setIsFlippedCPU: (isFlipped: boolean) => void;
 }
 
 function Game_zone({
@@ -45,6 +47,8 @@ function Game_zone({
   setWinner,
   showRectoCardCPU,
   isFlippedCPU,
+  setShowRectoCardCPU,
+  setIsFlippedCPU,
 }: GamezoneProps) {
   /*SECTION: Constantes d'état*/
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
@@ -60,6 +64,7 @@ function Game_zone({
   const [cpuScore, setCpuScore] = useState(0);
   const [round, setRound] = useState(1);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
 
   /*SECTION : Permet de setter la caractéristique du CPU*/
   useEffect(() => {
@@ -147,6 +152,8 @@ function Game_zone({
         setCharacteristicValidated(false);
         setSelectedChar({ label: "", value: 0, unit: "" });
         setWinner("");
+        setIsFlipped(false);
+        setIsFlippedCPU(false);
       }
     };
     determineWinner();
@@ -160,6 +167,7 @@ function Game_zone({
     setSelectedChar,
     setCharCPU,
     setWinner,
+    setIsFlippedCPU,
   ]);
 
   /*SECTION :Permet de vérifier si le jeu est terminé après 5 manches*/
@@ -169,6 +177,7 @@ function Game_zone({
         alert(
           `Jeu terminé ! Score final - Joueur : ${playerScore}, Ordinateur : ${cpuScore}`,
         );
+        handleRestart(); /*TODO*/
         setPlayerScore(0);
         setCpuScore(0);
         setRound(1);
@@ -239,6 +248,29 @@ function Game_zone({
     setShowRectoCard(true);
   };
 
+  /*SECTION : Permet de relancer une partie*/
+  const handleRestart = () => {
+    setIsResetting(true);
+    setAnimalP1(null);
+    setShowVersoCard(false);
+    setShowRectoCard(false);
+    setshowVersoCardCPU(false);
+    setShowRectoCardCPU(false);
+    setIsFlipped(false);
+    setIsFlippedCPU(false);
+    setCpuIdDeckCard("");
+    setHelp("Choisis une carte dans ta zone de pioche");
+    setShowWinnerModal(false);
+    setIsP1Turn(true);
+    setPlayerScore(0);
+    setCpuScore(0);
+    setRound(1);
+    setSelectedChar({ label: "", value: 0, unit: "" });
+    setCharCPU(0);
+    setWinner(null);
+    setAnimalComputer(null);
+    setCharacteristicValidated(false);
+  };
   return (
     <main>
       <Round round={round} />
@@ -256,6 +288,7 @@ function Game_zone({
             }}
             isP1={true}
             setIsP1Turn={setIsP1Turn}
+            isResetting={isResetting}
           />
         </div>
 
@@ -358,6 +391,7 @@ function Game_zone({
             cpuIdDeckCard={cpuIdDeckCard}
             showVersoCard={showVersoCard}
             setIsP1Turn={setIsP1Turn}
+            isResetting={isResetting}
           />
         </div>
       </section>

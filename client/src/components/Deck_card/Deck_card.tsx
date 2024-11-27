@@ -10,6 +10,7 @@ interface Deck_cardProps {
   cpuIdDeckCard: string;
   indexInDeck: string;
   setIsP1Turn: (show: boolean) => void;
+  isResetting: boolean;
 }
 
 function Deck_card({
@@ -20,6 +21,7 @@ function Deck_card({
   showVersoCard,
   setShowVersoCard,
   setIsP1Turn,
+  isResetting,
 }: Deck_cardProps) {
   const [isButtonClickable, setIsButtonClickable] = useState(true);
   const [isDistributing, setIsDistributing] = useState(false);
@@ -56,6 +58,13 @@ function Deck_card({
       setIsButtonClickable(false);
     }
   }, [showVersoCard, isP1, indexInDeck, cpuIdDeckCard]);
+
+  /*SECTION :Permet de rendre la carte clickable au reset */
+  useEffect(() => {
+    if (isResetting) {
+      setIsButtonClickable(true);
+    }
+  }, [isResetting]);
 
   return (
     <div className="deckCard">

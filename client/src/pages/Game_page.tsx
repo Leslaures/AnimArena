@@ -104,6 +104,8 @@ function Game_page() {
         setWinner={setWinner}
         showRectoCardCPU={showRectoCardCPU}
         isFlippedCPU={isFlippedCPU}
+        setShowRectoCardCPU={setShowRectoCardCPU}
+        setIsFlippedCPU={setIsFlippedCPU}
       />
     </div>
   );
