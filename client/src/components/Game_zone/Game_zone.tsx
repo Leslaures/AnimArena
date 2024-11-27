@@ -203,6 +203,15 @@ function Game_zone({
     }
   }, [selectedChar]);
 
+  useEffect(() => {
+    if (isP1Turn === false) {
+      const timer = setTimeout(() => {
+        setHelp("");
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [isP1Turn]);
+
   /*SECTION : Permet de synchroniser l'affichage de la carte du CPU avec celle du P1*/
   const handleSetAnimalP1 = (animal: AnimalType) => {
     setAnimalP1(animal);
