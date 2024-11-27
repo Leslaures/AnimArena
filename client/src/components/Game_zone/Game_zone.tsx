@@ -97,7 +97,7 @@ function Game_zone({
           2000,
         ); /*GREY : SIXIEME passage au tour de personne après que CPU ait dévoiler sa carte*/
 
-        setIsP1Turn(null); // tour du CPU /*TODO: ajouter un délai */
+        setIsP1Turn(null);
         let winnerMessage: string;
         let winnerEmoji: string;
         let winner: string;
@@ -186,7 +186,7 @@ function Game_zone({
     if (showVersoCardCPU) {
       const timer = setTimeout(() => {
         setHelp("Clique sur ta carte pour la révéler");
-      }, 0);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [showVersoCardCPU]);
