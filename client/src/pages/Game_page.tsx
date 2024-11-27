@@ -39,6 +39,8 @@ function Game_page() {
   const [winnerEmoji, setWinnerEmoji] = useState<string | null>(null);
   const [charCPU, setCharCPU] = useState<number | 0>(0);
   const [winner, setWinner] = useState<string | null>(null);
+  const [showRectoCardCPU, setShowRectoCardCPU] = useState(false);
+  const [isFlippedCPU, setIsFlippedCPU] = useState(false);
 
   /*SECTION : Permet de naviguer vers l'Encyclopédie */
   const handleEncyclopediaClick = () => {
@@ -61,6 +63,8 @@ function Game_page() {
       .then((data) => {
         const randomIndex = Math.floor(Math.random() * data.results.length);
         setAnimalComputer(data.results[randomIndex]);
+        setShowRectoCardCPU(true);
+        setIsFlippedCPU(true);
       })
       .catch((error) => console.error(error));
   };
@@ -98,6 +102,8 @@ function Game_page() {
         setCharCPU={setCharCPU}
         charCPU={charCPU}
         setWinner={setWinner}
+        showRectoCardCPU={showRectoCardCPU}
+        isFlippedCPU={isFlippedCPU}
       />
     </div>
   );

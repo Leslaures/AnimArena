@@ -19,7 +19,6 @@
 }
 .winner {
   animation: pulse 1s infinite;
-  transform-origin: center;
 }
 
 @keyframes pulse {

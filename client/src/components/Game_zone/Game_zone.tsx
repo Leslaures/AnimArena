@@ -24,6 +24,8 @@ interface GamezoneProps {
   charCPU: number;
   setCharCPU: (charCPU: number) => void;
   setWinner: (winner: string) => void;
+  showRectoCardCPU: boolean;
+  isFlippedCPU: boolean;
 }
 
 function Game_zone({
@@ -41,15 +43,17 @@ function Game_zone({
   charCPU,
   setCharCPU,
   setWinner,
+  showRectoCardCPU,
+  isFlippedCPU,
 }: GamezoneProps) {
   /*SECTION: Constantes d'état*/
   const [animal, setAnimalP1] = useState<AnimalType | null>(null);
   const [showVersoCard, setShowVersoCard] = useState(false);
   const [showRectoCard, setShowRectoCard] = useState(false);
   const [showVersoCardCPU, setshowVersoCardCPU] = useState(false);
+
   const [cpuIdDeckCard, setCpuIdDeckCard] = useState<string>("");
   const [help, setHelp] = useState("Choisis une carte dans ta zone de pioche");
-
   const [showWinnerModal, setShowWinnerModal] = useState(false);
   const [isP1Turn, setIsP1Turn] = useState<boolean | null>(true);
   const [playerScore, setPlayerScore] = useState(0);
@@ -271,7 +275,7 @@ function Game_zone({
                 <div className="flip-card-front">
                   {/* Contenu de la carte recto */}
                   {showVersoCard && !showRectoCard && (
-                    <div className="card-content">
+                    <div className="backgroundImage">
                       {/* Contenu du verso */}
                       <p> </p>
                     </div>
@@ -308,21 +312,37 @@ function Game_zone({
           >
             <div
               id="imgComputerContainer"
-              className={showVersoCardCPU ? "backgroundImage" : ""}
+              className={
+                showVersoCardCPU && !showRectoCardCPU ? "backgroundImage" : ""
+              }
             >
-              {animalComputer && (
-                <Animals_card
-                  isP1={false}
-                  animal={animalComputer}
-                  selectedChar={selectedChar}
-                  setSelectedChar={setSelectedChar}
-                  setIsP1Turn={setIsP1Turn}
-                  onValidateCharacteristic={() =>
-                    setCharacteristicValidated(true)
-                  }
-                  characteristicValidated={characteristicValidated}
-                />
-              )}
+              <div className={`flip-card ${isFlippedCPU ? "flipped" : ""}`}>
+                <div className="flip-card-front">
+                  {/* Contenu de la carte recto */}
+                  {showVersoCardCPU && !showRectoCardCPU && (
+                    <div className="card-content">
+                      {/* Contenu du verso */}
+                      <p> </p>
+                    </div>
+                  )}
+                </div>
+                <div className="flip-card-back">
+                  {/* Contenu de la carte verso */}
+                  {showRectoCardCPU && animalComputer && (
+                    <Animals_card
+                      isP1={false}
+                      animal={animalComputer}
+                      selectedChar={selectedChar}
+                      setSelectedChar={setSelectedChar}
+                      setIsP1Turn={setIsP1Turn}
+                      onValidateCharacteristic={() =>
+                        setCharacteristicValidated(true)
+                      }
+                      characteristicValidated={characteristicValidated}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
             <p>Ordinateur : {cpuScore}</p>
           </div>
