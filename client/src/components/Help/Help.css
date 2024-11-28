@@ -1,0 +1,19 @@
+#divHelp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#pHelp {
+  background-color: rgba(255, 251, 251, 0.8);
+  padding: 10px 10px;
+  width: 1100px;
+  min-height: 75px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 5px 10px black;
+  font-size: 1.8rem;
+}

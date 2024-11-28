@@ -1,0 +1,158 @@
+#zoneDeJeu {
+  display: grid;
+  grid-template-columns: 15% 2fr 2fr 15%;
+  gap: 10px;
+  text-align: center;
+  height: 100%;
+}
+main {
+  height: 100%;
+}
+p {
+  font-size: 2rem;
+}
+.grayed-out {
+  opacity: 0.5;
+  pointer-events: none; /* Désactive les interactions avec les éléments grisés */
+}
+#imgPlayerContainer,
+#imgComputerContainer {
+  height: 600px;
+  width: 415px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../../assets/images/Card_Placeholder.png);
+  background-size: 415px 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.backgroundImage {
+  background-image: url(../../assets/images/carte_verso.png) !important;
+  background-size: 415px 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+}
+.backgroundImage:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+.zoneDeJeuComputer,
+.zoneDeJeuPlayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 150px;
+}
+#imgPlayerContainer {
+  height: 600px;
+  width: 415px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  perspective: 1000px;
+}
+.zoneDePiochePlayer,
+.zoneDePiocheComputer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+/* ///////Responsive//////// */
+
+@media screen and (max-width: 1024px) {
+  #zoneDeJeu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr 1fr 1fr 1fr;
+    grid-template-areas: "item4" "item3" "item2" "item1";
+    row-gap: 5px;
+    margin: 0 auto;
+    text-align: center;
+    height: 95%;
+  }
+  #computer {
+    grid-area: item3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 1rem;
+    }
+  }
+  #player {
+    grid-area: item2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    p {
+      font-size: 2rem;
+    }
+  }
+  .zoneDePiochePlayer {
+    grid-area: item1;
+    height: 15vh;
+    width: auto;
+    margin-bottom: 0.5rem;
+  }
+  .zoneDePiocheComputer {
+    grid-area: item4;
+    display: none;
+  }
+  #imgComputerContainer {
+    width: auto;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #imgPlayerContainer {
+    width: auto;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: auto;
+    height: 100%;
+  }
+}

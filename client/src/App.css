@@ -1,145 +1,122 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  margin: 0;
+}
+.Game_button {
+  display: flex;
+  padding: 0.5rem 4rem;
+  background-color: #daa520;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 3rem;
+  font-weight: 900;
+  box-shadow: 1px 5px 10px black;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .Game_button {
+    padding: 0.5rem 4rem;
+    font-size: 2rem;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100vh;
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  color: black;
   font-size: 16px;
+  font-weight: 900;
   line-height: 1.7;
-  color: #eee;
-  margin: 0;
-}
-
-#root {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
+  background-image: url("./assets/images/Animarena_bg.jpg");
   background-size: cover;
-  background-position: top;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: 1fr;
-  align-content: start;
-  padding: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #daa520;
 }
 
-header {
-  grid-column: 1 / 2;
-  grid-row: 1;
-}
-
-.logo {
-  font-size: larger;
-}
-
-.navbar {
-  grid-column: -2 / -1;
-  grid-row: 1;
-}
-
-.navbar ul {
+nav {
   display: flex;
-  justify-content: end;
-  gap: 1rem;
-  list-style: none;
+  justify-content: center;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #eee;
+.home-page {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
   align-items: center;
 }
 
-.navbar a:hover {
-  scale: 110%;
+.rules-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
-.text-box {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  align-self: center;
+/* Bouton des règles du jeu */
+.game-rules-button-home,
+.game-rules-button-game {
+  background-color: #d2b48c;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  box-shadow: 1px 5px 10px black;
+  overflow: hidden;
 }
-
-.block-primary {
-  text-transform: uppercase;
-  margin-bottom: 2rem;
+.game-rules-button-home {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  padding: 1.5rem 4rem;
 }
-
-.block-primary-main {
-  font-size: 3em;
-  letter-spacing: 5px;
-  animation: blink 12s infinite;
+.game-rules-button-home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%; /* Rayon commence en dehors du bouton */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5); /* Lumière semi-transparente */
+  transform: skewX(-45deg); /* Inclinaison du rayon */
+  z-index: 1;
+  animation: slide-light 2s linear infinite; /* Animation continue */
 }
-
-.block-primary-sub {
-  display: block;
-  font-weight: bold;
-  letter-spacing: 7px;
-}
-
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 100px;
-  transition: all 0.2s;
-  position: relative;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-white {
-  background-color: #fff;
-  color: #777;
-}
-
-footer {
-  grid-column: -2 / -1;
-  grid-row: 1;
-  align-self: end;
-  text-align: right;
-}
-
-.wcs {
-  text-decoration: none;
-  color: #ff1493ad;
-}
-
-.wcs:hover {
-  text-decoration: underline;
-}
-
-@keyframes blink {
-  20%,
-  24%,
-  55% {
-    color: #111;
-    text-shadow: none;
+/* Animation du rayon */
+@keyframes slide-light {
+  0% {
+    left: -150%;
   }
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
+  50% {
+    left: 50%; /* Centre du bouton */
+  }
   100% {
-    text-shadow: 0 0 5px #ff1493ad, 0 0 15px #eee, 0 0 20px #ff1493ad, 0 0 40px
-      #a00ac9, 0 0 60px #ff0000, 0 0 10px #970dc5, 0 0 98px #ff0000;
-    color: #fff;
+    left: 150%; /* Rayon sort de l'autre côté */
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .game-rules-button-home,
+  .game-rules-button-game {
+    font-size: 1.5rem;
   }
 }

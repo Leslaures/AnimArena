@@ -1,0 +1,58 @@
+.buttonDeckCard {
+  background-image: url(../../assets/images/carte_verso.png);
+  background-size: cover;
+  background-position: top;
+  border-radius: 5px;
+  height: 130px;
+  width: 90px;
+  object-fit: contain;
+  border: none;
+  padding: 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+.buttonDeckCard:hover {
+  transform: scale(1.1);
+}
+.buttonDeckCardClickable {
+  cursor: pointer;
+}
+
+@keyframes distributeCard {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-50px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0) scale(1.5);
+  }
+}
+
+.distributing {
+  animation: distributeCard 0.5s forwards;
+}
+
+.deckCard {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-image: url(../../assets/images/Card_Placeholder.png);
+  background-size: 90px 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .buttonDeckCard {
+    width: 90%;
+    height: 90%;
+  }
+  .deckCard {
+    height: 100%;
+    gap: 5px;
+  }
+}

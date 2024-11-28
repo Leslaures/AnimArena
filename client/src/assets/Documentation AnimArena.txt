@@ -1,0 +1,10 @@
+Breakpoint utilisé pour la Responsive :
+@media screen and (max-width: 1024px)
+
+Structure
+App.tsx --
+	Game_page-------
+			Header
+			Game_Zone----
+						???
+	Home_page-------
