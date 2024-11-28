@@ -143,6 +143,7 @@ function Game_zone({
         setShowVersoCard(false);
         setShowRectoCard(false);
         setshowVersoCardCPU(false);
+        setShowRectoCardCPU(false);
         setCpuIdDeckCard("");
         setHelp("Clique sur une carte dans ta zone de pioche");
         setCharCPU(0);
@@ -168,6 +169,7 @@ function Game_zone({
     setCharCPU,
     setWinner,
     setIsFlippedCPU,
+    setShowRectoCardCPU,
   ]);
 
   /*SECTION :Permet de vérifier si le jeu est terminé après 5 manches*/
