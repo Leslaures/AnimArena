@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "./Game_page.css";
-import GameRulesModal from "../components/GameRulesModal/GameRulesModal";
 import Game_zone from "../components/Game_zone/Game_zone";
 import Selected_characteristic from "../components/Selected_characteristic/Selected_characteristic";
+import Selected_characteristic_CPU from "../components/Selected_characteristic_CPU/Selected_characteristic_CPU";
 
 export type AnimalType = {
   nom: string;
@@ -37,18 +37,22 @@ function Game_page() {
   const [animalComputer, setAnimalComputer] = useState<AnimalType | null>(null);
   const [winnerMessage, setWinnerMessage] = useState<string | null>(null);
   const [winnerEmoji, setWinnerEmoji] = useState<string | null>(null);
+  const [charCPU, setCharCPU] = useState<number | 0>(0);
+  const [winner, setWinner] = useState<string | null>(null);
+  const [showRectoCardCPU, setShowRectoCardCPU] = useState(false);
+  const [isFlippedCPU, setIsFlippedCPU] = useState(false);
 
-  //Permet de naviguer vers l'Encyclopédie
+  /*SECTION : Permet de naviguer vers l'Encyclopédie */
   const handleEncyclopediaClick = () => {
     navigate("/encyclopedia");
   };
 
-  // Permet de récupérer une carte aléatoire dans l'API pour CPU
+  /*SECTION : Permet de récupérer une carte aléatoire dans l'API pour CPU */
   useEffect(() => {
     if (characteristicValidated) {
       const timer = setTimeout(() => {
         playComputerTurn();
-      }, 1000);
+      }, 1000); /*GREY : CINQUIEME CPU dévoile le recto de sa carte après 1s*/
       return () => clearTimeout(timer);
     }
   }, [characteristicValidated]);
@@ -59,6 +63,8 @@ function Game_page() {
       .then((data) => {
         const randomIndex = Math.floor(Math.random() * data.results.length);
         setAnimalComputer(data.results[randomIndex]);
+        setShowRectoCardCPU(true);
+        setIsFlippedCPU(true);
       })
       .catch((error) => console.error(error));
   };
@@ -66,15 +72,19 @@ function Game_page() {
   return (
     <div id="gamePage">
       <div className="hide-mobile-screen">
-        <Selected_characteristic selectedChar={selectedChar} />
-        <GameRulesModal />
+        <Selected_characteristic selectedChar={selectedChar} winner={winner} />
+        <Selected_characteristic_CPU
+          charCPU={charCPU}
+          selectedChar={selectedChar}
+          winner={winner}
+        />
       </div>
       <button
         type="button"
         onClick={handleEncyclopediaClick}
         className="encyclopedia-button"
       >
-        Encyclopédie
+        <span>Encyclopédie</span>
       </button>
 
       <Game_zone
@@ -89,6 +99,13 @@ function Game_page() {
         setWinnerMessage={setWinnerMessage}
         setWinnerEmoji={setWinnerEmoji}
         setAnimalComputer={setAnimalComputer}
+        setCharCPU={setCharCPU}
+        charCPU={charCPU}
+        setWinner={setWinner}
+        showRectoCardCPU={showRectoCardCPU}
+        isFlippedCPU={isFlippedCPU}
+        setShowRectoCardCPU={setShowRectoCardCPU}
+        setIsFlippedCPU={setIsFlippedCPU}
       />
     </div>
   );

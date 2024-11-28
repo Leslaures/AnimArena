@@ -7,8 +7,8 @@
 
 .encyclopedia-button {
   position: fixed;
-  bottom: 3%;
-  right: 17%;
+  top: 3%;
+  right: 3%;
   background-color: #d2b48c;
   border-radius: 10px;
   border: none;
@@ -23,8 +23,32 @@
   box-shadow: 1px 5px 10px black;
   padding: 0.8rem 1.5rem;
   font-size: 1.5rem;
+  overflow: hidden;
 }
-
+.encyclopedia-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 5%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(-45deg);
+  z-index: 1;
+  animation: slide-light 1s linear infinite;
+}
+/* Animation du rayon */
+@keyframes slide-light {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
 .encyclopedia-button:hover {
   background-color: #daa520;
   transform: scale(1.1);

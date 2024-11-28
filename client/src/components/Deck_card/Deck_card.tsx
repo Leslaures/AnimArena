@@ -10,6 +10,7 @@ interface Deck_cardProps {
   cpuIdDeckCard: string;
   indexInDeck: string;
   setIsP1Turn: (show: boolean) => void;
+  isResetting: boolean;
 }
 
 function Deck_card({
@@ -20,11 +21,12 @@ function Deck_card({
   showVersoCard,
   setShowVersoCard,
   setIsP1Turn,
+  isResetting,
 }: Deck_cardProps) {
   const [isButtonClickable, setIsButtonClickable] = useState(true);
   const [isDistributing, setIsDistributing] = useState(false);
 
-  // Permet de récupérer une carte aléatoire dans l'API pour P1
+  /*SECTION : Permet de récupérer une carte aléatoire dans l'API pour P1 */
   const getAnimal = () => {
     setIsDistributing(true);
     setTimeout(() => {
@@ -38,8 +40,8 @@ function Deck_card({
             setShowVersoCard(true);
             setIsDistributing(false);
             const timer = setTimeout(() => {
-              setIsP1Turn(false); // tour du CPU  /*TODO:*/
-            }, 2000);
+              setIsP1Turn(false); // tour du CPU /*GREY : PREMIER passage du tour du P1 au CPU*/
+            }, 1000);
             return () => clearTimeout(timer);
           })
           .catch((error) => {
@@ -50,12 +52,19 @@ function Deck_card({
     }, 500);
   };
 
-  //Permet de défausser la petite carte du CPU
+  /*SECTION :Permet de défausser la petite carte du CPU */
   useEffect(() => {
     if (!isP1 && showVersoCard === true && indexInDeck === cpuIdDeckCard) {
       setIsButtonClickable(false);
     }
   }, [showVersoCard, isP1, indexInDeck, cpuIdDeckCard]);
+
+  /*SECTION :Permet de rendre la carte clickable au reset */
+  useEffect(() => {
+    if (isResetting) {
+      setIsButtonClickable(true);
+    }
+  }, [isResetting]);
 
   return (
     <div className="deckCard">

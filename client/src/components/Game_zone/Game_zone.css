@@ -46,7 +46,7 @@ p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  margin-top: 150px;
 }
 #imgPlayerContainer {
   height: 600px;
@@ -58,14 +58,41 @@ p {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  perspective: 1000px;
 }
 .zoneDePiochePlayer,
 .zoneDePiocheComputer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
 }
 
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
 /* ///////Responsive//////// */
 
 @media screen and (max-width: 1024px) {

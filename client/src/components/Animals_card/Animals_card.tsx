@@ -22,7 +22,7 @@ function Animals_card({
   setIsP1Turn,
   characteristicValidated,
 }: Animals_cardProps) {
-  // Permet de récupérer la caractéristique choisie
+  /*SECTION : Permet de récupérer la caractéristique choisie */
   const handleCharacteristic = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = JSON.parse(event.target.value);
     const formattedValue = {
@@ -35,12 +35,12 @@ function Animals_card({
     isSelectedChar = true;
   };
 
-  // Permet de valider la caractéristique choisie
+  /*SECTION : Permet de valider la caractéristique choisie */
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onValidateCharacteristic();
     isSelectedChar = false;
-    setIsP1Turn(false); // tour du CPU  /*TODO:*/
+    setIsP1Turn(false); /*GREY : QUATRIEME passage au tour du CPU*/
   };
 
   return (

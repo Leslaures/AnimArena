@@ -6,23 +6,14 @@ interface Winner_modalProps {
   children: React.ReactNode;
 }
 
-const Winner_modal: React.FC<Winner_modalProps> = ({
-  show,
-  onClose,
-  children,
-}) => {
+const Winner_modal: React.FC<Winner_modalProps> = ({ show, children }) => {
   if (!show) {
     return null;
   }
 
   return (
     <div className="modal-overlay">
-      <div className="modal">
-        <button type="button" className="modal-closeBtn" onClick={onClose}>
-          &times;
-        </button>
-        {children}
-      </div>
+      <div className="modal">{children}</div>
     </div>
   );
 };
