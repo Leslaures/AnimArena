@@ -23,7 +23,7 @@ function EncyclopediaPage() {
 
   // Récupère les données de l'API au chargement
   useEffect(() => {
-    fetch("http://localhost:3310/api/animalsLibrary")
+    fetch("https://arenapi.creativebrain.fr/api/animalsLibrary")
       .then((response) => response.json())
       .then((data) => {
         if (data?.results) {
