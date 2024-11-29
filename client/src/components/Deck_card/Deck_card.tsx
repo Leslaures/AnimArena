@@ -31,7 +31,7 @@ function Deck_card({
     setIsDistributing(true);
     setTimeout(() => {
       if (isP1 === true) {
-        fetch("http://localhost:3310/api/animalsLibrary")
+        fetch("https://arenapi.creativebrain.fr/api/animalsLibrary")
           .then((response) => response.json())
           .then((data) => {
             const randomIndex = Math.floor(Math.random() * data.results.length);
